@@ -1,0 +1,38 @@
+body{
+  height: 100%;
+  overflow-x: hidden;
+}
+.pusher{
+  position: relative;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  min-height: 100%;
+  -webkit-transition: -webkit-transform 500ms ease;
+  transition: transform 500ms ease;
+  background: #f7f7f7;
+  z-index: 2;
+  &.dimmed{
+    -webkit-transform: translate3d(220px, 0, 0);
+    transform: translate3d(220px, 0, 0);
+    &:after{
+      width: 100% !important;
+      height: 100% !important;
+      opacity: 1 !important;
+    }
+  }
+  &:after{
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    content: '';
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+    opacity: 0;
+    -webkit-transition: -webkit-transform 500ms, opacity 500ms;
+    transition: transform 500ms, opacity 500ms;
+    will-change: opacity;
+    z-index: 1000;
+  }
+}

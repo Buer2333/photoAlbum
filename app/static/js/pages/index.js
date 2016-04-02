@@ -11,4 +11,22 @@ $grid.imagesLoaded().progress( function() {
     $grid.masonry();
 });
 
-//uikit灯箱
+//切换sidebar
+$(".icon-base").on('click',function(event){
+    event.stopPropagation();
+    $(".pusher").addClass('dimmed');
+    $(".left-sidebar").addClass('visible');
+    var visibility = $(".left-sidebar").css('visibility');
+    if (visibility == 'visible'){
+        $(".pusher").on('click',function(){
+            $(".pusher").removeClass('dimmed');
+            $(".left-sidebar").removeClass('visible');
+        })
+    }
+})
+$(document).ready(function(){
+
+})
+
+
+
