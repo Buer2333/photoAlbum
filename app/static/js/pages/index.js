@@ -20,14 +20,13 @@ $(".icon-base").on('click',function(event){
     if (visibility == 'visible'){
         $(".pusher").on('click',function(){
             $(".pusher").removeClass('dimmed');
-            $(".left-sidebar").removeClass('visible');
+            //$(".left-sidebar").removeClass('visible');
         })
     }
 })
 $(document).ready(function(){
 
 })
-//test
 
 
 
