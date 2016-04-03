@@ -23,9 +23,27 @@ $(".icon-base").on('click',function(event){
             //$(".left-sidebar").removeClass('visible');
         })
     }
-})
-$(document).ready(function(){
+});
+//box的hover效果
+//var figcaption = $('<div class="uk-overlay-panel uk-overlay-background"></div>')
 
+$(document).ready(function(){
+    //$(".box").hover(function(){
+    //    $(this).children().append(figcaption).addClass("uk-overlay")
+    //},function(){
+    //    $(this).children().remove(figcaption).removeClass("uk-overlay")
+    //})
+    $(".box").hover(function(){
+        $(this).find("img").addClass('enlarge');
+        $(this).find(".uk-overlay-panel").addClass('uk-overlay-background');
+        $(this).find(".top").addClass('slideDown');
+        $(this).find(".bottom").addClass('slideUp');
+    },function(){
+        $(this).find("img").removeClass('enlarge');
+        $(this).find(".uk-overlay-panel").removeClass('uk-overlay-background');
+        $(this).find(".top").removeClass('slideDown');
+        $(this).find(".bottom").removeClass('slideUp');
+    })
 })
 
 
