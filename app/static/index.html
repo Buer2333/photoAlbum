@@ -8,11 +8,34 @@
 <body>
 <div class="left-sidebar">
     <div class="user-info">
-        <div class="user-img">
+        <div class="user-img" data-uk-modal="{target:'.uk-modal'}">
             <img src="img/test/account-photo.png" alt="">
         </div>
         <p class="user-name">Alan</p>
         <p class="user-email">alanqqz@qq.com</p>
+    </div>
+    <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav>
+        <li class="uk-parent uk-active" aria-expanded="false">
+            <a href="#">相册分类</a>
+            <ul class="uk-nav-sub">
+                <li><a href="#">Sub item</a></li>
+                <li><a href="#">Sub item</a>
+                    <ul>
+                        <li><a href="#">Sub item</a></li>
+                        <li><a href="#">Sub item</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li class=""><a href="#">相片管理</a></li>
+
+    </ul>
+</div>
+<div class="uk-modal">
+    <div class="uk-modal-dialog">
+        <div class="uk-modal-header">...</div>
+        ...
+        <div class="uk-modal-footer">...</div>
     </div>
 </div>
 <div class="pusher">
