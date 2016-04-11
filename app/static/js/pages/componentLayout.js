@@ -1,7 +1,7 @@
 var Foo = Vue.extend({
     template: '<div class="layout">' +
     '<div class="content">' +
-    '<div class="box">' +
+    '<div class="box" v-on:mouseover="mouseEnter" v-on:mouseout="mouseLeave">' +
     '<a href="img/test/u_20121025172315750264.jpg" data-uk-lightbox="{group: my-group}">' +
     '<div class="img-overflow">' +
     '<img src="img/test/u_20121025172315750264.jpg">' +
@@ -27,8 +27,31 @@ var Foo = Vue.extend({
     '</a>'+
     '</div>' +
     '</div>' +
-    '</div>'
-})
+    '</div>',
+    methods : {
+
+        mouseEnter : function() {
+
+                    $(".box").find("img").addClass('enlarge');
+                    $(".box").find(".uk-overlay-panel").addClass('uk-overlay-background');
+                    $(".box").find(".top").addClass('slideDown');
+                    $(".box").find(".bottom").addClass('slideUp');
+
+        },
+        mouseLeave : function(){
+                $(".box").find("img").removeClass('enlarge');
+                $(".box").find(".uk-overlay-panel").removeClass('uk-overlay-background');
+                $(".box").find(".top").removeClass('slideDown');
+                $(".box").find(".bottom").removeClass('slideUp');
+        }
+    }
+    //transition: {
+    //    mouseHover : {
+    //        enterClass: 'enlarge',
+    //        leaveClass: 'enlarge'
+    //    }
+    //}
+});
 
 var Bar = Vue.extend({
     template: '<p>This is bar!</p>'

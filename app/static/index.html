@@ -9,7 +9,7 @@
 <div id="app">
     <div class="left-sidebar">
         <div class="user-info">
-            <div class="user-img" data-uk-modal="{target:'.uk-modal'}">
+            <div class="user-img" data-uk-modal="{target:'.login-modal',center:true}">
                 <img src="img/test/account-photo.png" alt="">
             </div>
             <p class="user-name">Alan</p>
@@ -35,11 +35,50 @@
         </ul>
     </div>
 
-    <div class="uk-modal">
+    <div class="uk-modal login-modal">
         <div class="uk-modal-dialog">
-            <div class="uk-modal-header">...</div>
-            ...
-            <div class="uk-modal-footer">...</div>
+            <a class="uk-modal-close uk-close"></a>
+            <div class="uk-modal-header">登陆</div>
+            <form class="uk-form uk-form-horizontal uk-text-center">
+
+                <div class="uk-form-row">
+                    <label class="uk-form-label uk-text-right" for="form-h-it">用户名</label>
+                        <input type="text" id="form-h-it" placeholder="Text input">
+                </div>
+                <div class="uk-form-row">
+                    <label class="uk-form-label uk-text-right" for="form-h-ip">密码</label>
+                        <input type="password" id="form-h-ip" placeholder="Password input">
+                </div>
+            </form>
+            <div class="uk-modal-footer uk-text-right">
+                <p>
+                    <a class="uk-button uk-button-primary">登陆</a>
+                    <a class="uk-button uk-button-success" data-uk-modal="{target:'.register-modal',center:true}">注册</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="uk-modal register-modal">
+        <div class="uk-modal-dialog">
+            <a class="uk-modal-close uk-close"></a>
+            <div class="uk-modal-header">注册</div>
+            <form class="uk-form uk-form-horizontal uk-text-center">
+
+                <div class="uk-form-row">
+                    <label class="uk-form-label uk-text-right" for="form-u-it">用户名</label>
+                    <input type="text" id="form-u-it" placeholder="Text input">
+                </div>
+                <div class="uk-form-row">
+                    <label class="uk-form-label uk-text-right" for="form-u-ip">密码</label>
+                    <input type="password" id="form-u-ip" placeholder="Password input">
+                </div>
+            </form>
+            <div class="uk-modal-footer uk-text-right">
+                <p>
+                    <a class="uk-button uk-button-primary">确认</a>
+                    <a class="uk-button">取消</a>
+                </p>
+            </div>
         </div>
     </div>
 
@@ -65,104 +104,104 @@
             </div>
         </header>
         <router-view></router-view>
-        <!--<div class="layout">-->
-            <!--<div class="content">-->
-                <!--<div class="box">-->
-                    <!--<a href="img/test/u_20121025172315750264.jpg" data-uk-lightbox="{group:'my-group'}">-->
-                        <!--<div class="img-overflow">-->
-                            <!--<img src="img/test/u_20121025172315750264.jpg">-->
-                        <!--</div>-->
-                        <!--<div class="uk-overlay-panel">-->
-                            <!--<div class="text-content">-->
-                                <!--<div class="top">-->
-                                    <!--<div class="meta">-->
-                                        <!--<span class="time">aaa</span>-->
-                                        <!--<span class="views">aaa</span>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="text-content">-->
-                                <!--<div class="bottom">-->
-                                    <!--<div class="meta">-->
-                                        <!--<span class="detail">aaa</span>-->
-                                        <!--<span class="author">aaaa</span>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</a>-->
-                <!--</div>-->
-                <!--<div class="box">-->
-                    <!--<a href="img/test/u_20121025172326015264.jpg" data-uk-lightbox="{group:'my-group'}">-->
-                        <!--<img src="img/test/u_20121025172326015264.jpg">-->
-                    <!--</a>-->
-                <!--</div>-->
-                <!--<div class="box">-->
-                    <!--<a href="img/test/u_20140514093153735264.jpg" data-uk-lightbox="{group:'my-group'}">-->
-                        <!--<img src="img/test/u_20140514093153735264.jpg">-->
-                    <!--</a>-->
-                <!--</div>-->
-                <!--<div class="box">-->
-                    <!--<a href="img/test/u_20140514093205163264.jpg" data-uk-lightbox="{group:'my-group'}">-->
-                        <!--<img src="img/test/u_20140514093205163264.jpg">-->
-                    <!--</a>-->
-                <!--</div>-->
-                <!--<div class="box">-->
-                    <!--<a href="img/test/u_autohomecar__wKgFU1bUgKCAAJAFAAOjyyhnSWY002.jpg" data-uk-lightbox="{group:'my-group'}">-->
-                        <!--<img src="img/test/u_autohomecar__wKgFU1bUgKCAAJAFAAOjyyhnSWY002.jpg">-->
-                    <!--</a>-->
-                <!--</div>-->
-                <!--<div class="box">-->
-                    <!--<a href="img/test/u_20121025172315750264.jpg" data-uk-lightbox="{group:'my-group'}">-->
-                        <!--<img src="img/test/u_20121025172315750264.jpg">-->
-                    <!--</a>-->
-                <!--</div>-->
-                <!--<div class="box">-->
-                    <!--<a href="img/test/u_20121025172326015264.jpg" data-uk-lightbox="{group:'my-group'}">-->
-                        <!--<img src="img/test/u_20121025172326015264.jpg">-->
-                    <!--</a>-->
-                <!--</div>-->
-                <!--<div class="box">-->
-                    <!--<a href="img/test/u_20140514093153735264.jpg" data-uk-lightbox="{group:'my-group'}">-->
-                        <!--<img src="img/test/u_20140514093153735264.jpg">-->
-                    <!--</a>-->
-                <!--</div>-->
-                <!--<div class="box">-->
-                    <!--<a href="img/test/u_20140514093205163264.jpg" data-uk-lightbox="{group:'my-group'}">-->
-                        <!--<img src="img/test/u_20140514093205163264.jpg">-->
-                    <!--</a>-->
-                <!--</div>-->
-                <!--<div class="box">-->
-                    <!--<a href="img/test/u_autohomecar__wKgFU1bUgKCAAJAFAAOjyyhnSWY002.jpg" data-uk-lightbox="{group:'my-group'}">-->
-                        <!--<img src="img/test/u_autohomecar__wKgFU1bUgKCAAJAFAAOjyyhnSWY002.jpg">-->
-                    <!--</a>-->
-                <!--</div>-->
-                <!--<div class="box">-->
-                    <!--<a href="img/test/u_20121025172315750264.jpg" data-uk-lightbox="{group:'my-group'}">-->
-                        <!--<img src="img/test/u_20121025172315750264.jpg">-->
-                    <!--</a>-->
-                <!--</div>-->
-                <!--<div class="box">-->
-                    <!--<a href="img/test/u_20121025172326015264.jpg" data-uk-lightbox="{group:'my-group'}">-->
-                        <!--<img src="img/test/u_20121025172326015264.jpg">-->
-                    <!--</a>-->
-                <!--</div>-->
-                <!--<div class="box">-->
-                    <!--<a href="img/test/u_20140514093153735264.jpg" data-uk-lightbox="{group:'my-group'}">-->
-                        <!--<img src="img/test/u_20140514093153735264.jpg">-->
-                    <!--</a>-->
-                <!--</div>-->
-                <!--<div class="box">-->
-                    <!--<a href="img/test/u_20140514093205163264.jpg" data-uk-lightbox="{group:'my-group'}">-->
-                        <!--<img src="img/test/u_20140514093205163264.jpg">-->
-                    <!--</a>-->
-                <!--</div>-->
-                <!--<div class="box">-->
-                    <!--<a href="img/test/u_autohomecar__wKgFU1bUgKCAAJAFAAOjyyhnSWY002.jpg" data-uk-lightbox="{group:'my-group'}">-->
-                        <!--<img src="img/test/u_autohomecar__wKgFU1bUgKCAAJAFAAOjyyhnSWY002.jpg">-->
-                    <!--</a>-->
-                <!--</div>-->
-            <!--</div>-->
+        <div class="layout">
+            <div class="content">
+                <div class="box">
+                    <a href="img/test/u_20121025172315750264.jpg" data-uk-lightbox="{group:'my-group'}">
+                        <div class="img-overflow">
+                            <img src="img/test/u_20121025172315750264.jpg">
+                        </div>
+                        <div class="uk-overlay-panel">
+                            <div class="text-content">
+                                <div class="top">
+                                    <div class="meta">
+                                        <span class="time">aaa</span>
+                                        <span class="views">aaa</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-content">
+                                <div class="bottom">
+                                    <div class="meta">
+                                        <span class="detail">aaa</span>
+                                        <span class="author">aaaa</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="box">
+                    <a href="img/test/u_20121025172326015264.jpg" data-uk-lightbox="{group:'my-group'}">
+                        <img src="img/test/u_20121025172326015264.jpg">
+                    </a>
+                </div>
+                <div class="box">
+                    <a href="img/test/u_20140514093153735264.jpg" data-uk-lightbox="{group:'my-group'}">
+                        <img src="img/test/u_20140514093153735264.jpg">
+                    </a>
+                </div>
+                <div class="box">
+                    <a href="img/test/u_20140514093205163264.jpg" data-uk-lightbox="{group:'my-group'}">
+                        <img src="img/test/u_20140514093205163264.jpg">
+                    </a>
+                </div>
+                <div class="box">
+                    <a href="img/test/u_autohomecar__wKgFU1bUgKCAAJAFAAOjyyhnSWY002.jpg" data-uk-lightbox="{group:'my-group'}">
+                        <img src="img/test/u_autohomecar__wKgFU1bUgKCAAJAFAAOjyyhnSWY002.jpg">
+                    </a>
+                </div>
+                <div class="box">
+                    <a href="img/test/u_20121025172315750264.jpg" data-uk-lightbox="{group:'my-group'}">
+                        <img src="img/test/u_20121025172315750264.jpg">
+                    </a>
+                </div>
+                <div class="box">
+                    <a href="img/test/u_20121025172326015264.jpg" data-uk-lightbox="{group:'my-group'}">
+                        <img src="img/test/u_20121025172326015264.jpg">
+                    </a>
+                </div>
+                <div class="box">
+                    <a href="img/test/u_20140514093153735264.jpg" data-uk-lightbox="{group:'my-group'}">
+                        <img src="img/test/u_20140514093153735264.jpg">
+                    </a>
+                </div>
+                <div class="box">
+                    <a href="img/test/u_20140514093205163264.jpg" data-uk-lightbox="{group:'my-group'}">
+                        <img src="img/test/u_20140514093205163264.jpg">
+                    </a>
+                </div>
+                <div class="box">
+                    <a href="img/test/u_autohomecar__wKgFU1bUgKCAAJAFAAOjyyhnSWY002.jpg" data-uk-lightbox="{group:'my-group'}">
+                        <img src="img/test/u_autohomecar__wKgFU1bUgKCAAJAFAAOjyyhnSWY002.jpg">
+                    </a>
+                </div>
+                <div class="box">
+                    <a href="img/test/u_20121025172315750264.jpg" data-uk-lightbox="{group:'my-group'}">
+                        <img src="img/test/u_20121025172315750264.jpg">
+                    </a>
+                </div>
+                <div class="box">
+                    <a href="img/test/u_20121025172326015264.jpg" data-uk-lightbox="{group:'my-group'}">
+                        <img src="img/test/u_20121025172326015264.jpg">
+                    </a>
+                </div>
+                <div class="box">
+                    <a href="img/test/u_20140514093153735264.jpg" data-uk-lightbox="{group:'my-group'}">
+                        <img src="img/test/u_20140514093153735264.jpg">
+                    </a>
+                </div>
+                <div class="box">
+                    <a href="img/test/u_20140514093205163264.jpg" data-uk-lightbox="{group:'my-group'}">
+                        <img src="img/test/u_20140514093205163264.jpg">
+                    </a>
+                </div>
+                <div class="box">
+                    <a href="img/test/u_autohomecar__wKgFU1bUgKCAAJAFAAOjyyhnSWY002.jpg" data-uk-lightbox="{group:'my-group'}">
+                        <img src="img/test/u_autohomecar__wKgFU1bUgKCAAJAFAAOjyyhnSWY002.jpg">
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
