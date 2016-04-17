@@ -25,7 +25,6 @@ $(".icon-base").on('click',function(event){
                 },500)
             }
 
-
         })
 });
 
@@ -70,11 +69,8 @@ function setScroll(){
     }
     animateOnScroll();
 })
-//uk-slidedown切换
-//$(".uk-parent").find("a").on("click",function(){
-//    $(this).next().toggleClass("uk-hidden");
-//})
 
+//photo-op
 
 
 
