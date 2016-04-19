@@ -2,6 +2,7 @@ from app import db,app
 from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import (TimedJSONWebSignatureSerializer
                           as Serializer, BadSignature, SignatureExpired,BadPayload)
+
 class User(db.Model):
 	'''用户'''
 	__tablename__ ='users'

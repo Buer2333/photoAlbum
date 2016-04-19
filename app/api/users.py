@@ -1,10 +1,13 @@
+import os
 from flask.ext.httpauth import HTTPBasicAuth
 from flask import g,request,url_for,abort,session,make_response,render_template
 from . import api
 from flask import jsonify
 from ..model import User,db,Photo,PhotoAlbum
+from werkzeug.utils import secure_filename
+from datetime import datetime
 
-
+UPLOAD_FOLDER = "app/static/img/"
 
 auth = HTTPBasicAuth()
 @auth.verify_password
@@ -19,7 +22,35 @@ def verify_password(email_or_token,password):
         g.token = True
     g.user = user
     return True
+#添加图片
+@api.route('/upload_image', methods=['POST'])
+def upload_image():
+    token = request.args.get('token')
+    category_id= request.args.get('category_id')
+    photo_name = request.args.get('photo_name','')
+    photo_content = request.args.get('photo_content','')
 
+    if not token  or not category_id:
+        return jsonify({"type":False})
+    user = User.verify_auth_token(token)
+    if not user:
+        return abort(400)
+    photo_album = PhotoAlbum.query.get(category_id)
+    if photo_album.user_id == user.id:
+        files = request.files.getlist('file')
+        if files:
+            for file in files:
+                filename = secure_filename(file.filename)
+                nowtime = datetime.now()
+                filename = str(nowtime.timestamp())+filename
+                file.save(os.path.join(UPLOAD_FOLDER, filename))
+                photo = Photo(title=photo_name,content=photo_content,time=nowtime,photo_url=UPLOAD_FOLDER+filename,photo_Album_id=category_id)
+                db.session.add(photo)
+            db.session.commit()
+            return jsonify({'type':True})
+        return str('ab')
+    else:
+        return jsonify({'type':False})
 
 #注册用户
 @api.route('/register', methods = ['POST'])
