@@ -75,5 +75,5 @@ class Photo(db.Model):
 		return{
 		"title":self.title,
 		"content":self.content,
-		"Photo_url":self.Photo_url
+		"Photo_url":self.photo_url
 		}

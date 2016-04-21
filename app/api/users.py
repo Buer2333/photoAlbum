@@ -125,11 +125,11 @@ def all_photo_album(userID):
     return jsonify({"photo_albums":photo_albums_Array})
 
 #获取用户分类图片
-@api.route('/all_photo_album/<int:photo_albumID>')
+@api.route('/all_photo/<int:photo_albumID>')
 def get_user_photos(photo_albumID):
     count = int(request.args.get('count',10))
     offset = int(request.args.get('offset',0))
-    photos = Photo.query.filter_by(photo_Album_id=photo_albumID).limit(count),offset(offset)
+    photos = Photo.query.filter_by(photo_Album_id=photo_albumID).limit(count).offset(offset)
     photos_array = []
     for photo in photos:
         photos_array.append(photo.to_json())
