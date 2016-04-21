@@ -1,22 +1,120 @@
-
+//主内容外层
 .layout{
   position: relative;
   background-color: transparent;
   box-shadow: none;
   border-radius: 0px;
+  padding-left: 9%;
+  padding-right: 9%;
+  margin-top: 35px;
+  width:auto;
   .content {
     &:after{
       content: '';
       display: block;
       clear: both;
     }
+    //相片盒子
     .box {
+      opacity: 1;
       width: 33.33%;
       float: left;
-      padding: 5px;
-      img{
+      padding: 7px;
+      display: block;
+      >a{
+        outline: none;
+        border: none;
         display: block;
         max-width: 100%;
+        text-decoration: none;
+        overflow: visible;
+        position: relative;
+        .img-overflow{
+          position: relative;
+          overflow: hidden;
+          img{
+            //-webkit-transition: opacity 0.33s;
+            //transition: opacity 0.33s;
+            display: block;
+            max-width: 100%;
+            -webkit-transform: scale(1.05);
+            -ms-transform: scale(1.05);
+            transform: scale(1.05);
+            position: relative;
+            width: 100%;
+            transition: all 0.5s linear;
+            &.enlarge{
+              transform: scale(1);
+              transition: all 0.5s linear;
+            }
+          }
+        }
+        .uk-overlay-panel{
+          padding: 0;
+          opacity:0;
+          transition: all 0.5s linear;
+          background: radial-gradient(rgba(5, 6, 6, 0.431373), rgba(5, 6, 6, 0.921569));
+          &.uk-overlay-background{
+            opacity: 1;
+            transition: all .5s linear;
+            background: radial-gradient(rgba(5, 6, 6, 0.431373), rgba(5, 6, 6, 0.921569));
+            transform: translateZ(0);
+          }
+        }
+      }
+    }
+  }
+}
+//相片thumb说明
+.text-content{
+  height: 50%;
+  width: 100%;
+  display: table;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  .top{
+    vertical-align: top;
+    .meta{
+      padding-top: 0;
+    }
+    &.slideDown{
+      transition: all .4s ease-in-out;
+      transform: translateY(15px);
+    }
+  }
+  .bottom{
+    vertical-align: bottom;
+    .meta{
+      padding-bottom: 0;
+    }
+    &.slideUp{
+      transition: all .4s ease-in-out;
+      transform: translateY(-15px);
+    }
+  }
+  >div{
+    transition: all .4s ease-in-out;
+    position: relative;
+    transform: translateY(0px);
+    display: table-cell;
+    color: #ffffff;
+    .meta{
+      display: block;
+      padding: 15px;
+      >span{
+        float: left;
+        width: 50%;
+        text-align: left;
+        font-size: 0.8rem;
+        opacity: 0.6;
+        -webkit-transition: opacity 0.4s ease-in-out;
+        transition: opacity 0.4s ease-in-out;
+      }
+      >span:last-child{
+        float: right;
+        text-align: right;
       }
     }
   }

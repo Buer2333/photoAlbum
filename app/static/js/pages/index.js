@@ -17,16 +17,60 @@ $(".icon-base").on('click',function(event){
     $(".pusher").addClass('dimmed');
     $(".left-sidebar").addClass('visible');
     var visibility = $(".left-sidebar").css('visibility');
-    if (visibility == 'visible'){
         $(".pusher").on('click',function(){
-            $(".pusher").removeClass('dimmed');
-            $(".left-sidebar").removeClass('visible');
-        })
-    }
-})
-$(document).ready(function(){
+            if (visibility == 'visible'){
+                $(".pusher").removeClass('dimmed');
+                setTimeout(function(){
+                    $(".left-sidebar").removeClass('visible')
+                },500)
+            }
 
+        })
+});
+
+
+//box的hover效果
+//var figcaption = $('<div class="uk-overlay-panel uk-overlay-background"></div>')
+
+
+//toggle-sidebar监听浏览器高度变化
+$(document).ready(function(){
+var scrolling;
+document.addEventListener("scroll", setScroll, false);
+document.addEventListener("mousewheel", setScroll, false);
+function setScroll(){
+    scrolling = true;
+}
+    function animateOnScroll(){
+        var requestAnimationFrame = window.requestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.msRequestAnimationFrame;
+        if (scrolling){
+            var scrollPosition = window.scrollY;
+            $(".header-bg").css({
+                transform: 'translate3d(0px,' + scrollPosition / 2 + 'px,0px)'
+            });
+            $(".header-bg-wrapper").css({
+                transform: 'translate3d(0px,' + scrollPosition / 4 + 'px,0px)'
+            })
+            if (scrollPosition>70){
+                $(".page").addClass('static').css({
+                    transform: 'translate3d(0px,' + scrollPosition + 'px,0px)'
+                })
+            }else {
+                $(".page").removeClass('static').css({
+                    transform: 'translate3d(0px,0px,0px)'
+                })
+            }
+            scrolling = false;
+        }
+        requestID = requestAnimationFrame(animateOnScroll)
+    }
+    animateOnScroll();
 })
+
+//photo-op
 
 
 
