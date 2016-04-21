@@ -20,14 +20,14 @@
             <li class="uk-parent uk-active" aria-expanded="false">
                 <a href="#">相片分类</a>
                 <ul class="uk-nav-sub">
-                    <li><a href="#" v-link="{ path: '/all' }" class="uk-active">所有</a></li>
-                    <li><a href="#" v-link="{ path: '/human' }">人物</a></li>
-                    <li><a href="#" v-link="{ path: '/animal' }">动物</a></li>
-                    <li><a href="#" v-link="{ path: '/city' }">城市</a></li>
-                    <li><a href="#" v-link="{ path: '/science' }">科学/技术</a></li>
-                    <li><a href="#" v-link="{ path: '/fashion' }">美妆/时尚</a></li>
-                    <li><a href="#" v-link="{ path: '/nature' }">自然/旅游</a></li>
-                    <li><a href="#" v-link="{ path: '/food' }">食物/饮料</a></li>
+                    <!--<li v-for="index in"><a href="#" v-link="{ name: 'index', params: 'index.filter' }" class="uk-active">所有</a></li>-->
+                    <li><a href="#" v-link="{ name: 'human' }">人物</a></li>
+                    <li><a href="#" v-link="{ name: 'animal' }">动物</a></li>
+                    <li><a href="#" v-link="{ name: 'city' }">城市</a></li>
+                    <li><a href="#" v-link="{ name: 'science' }">科学/技术</a></li>
+                    <li><a href="#" v-link="{ name: 'fashion' }">美妆/时尚</a></li>
+                    <li><a href="#" v-link="{ name: 'nature' }">自然/旅游</a></li>
+                    <li><a href="#" v-link="{ name: 'food' }">食物/饮料</a></li>
                 </ul>
             </li>
             <li class="">
@@ -46,17 +46,17 @@
             <form class="uk-form uk-form-horizontal uk-text-center">
 
                 <div class="uk-form-row">
-                    <label class="uk-form-label uk-text-right" for="form-h-it">用户名</label>
-                        <input type="text" id="form-h-it" placeholder="Text input">
+                    <label class="uk-form-label uk-text-right" for="form-l-useremail">邮箱</label>
+                        <input type="text" id="form-l-useremail" placeholder="Text input" v-model="user_email">
                 </div>
                 <div class="uk-form-row">
-                    <label class="uk-form-label uk-text-right" for="form-h-ip">密码</label>
-                        <input type="password" id="form-h-ip" placeholder="Password input">
+                    <label class="uk-form-label uk-text-right" for="form-l-password">密码</label>
+                        <input type="password" id="form-l-password" placeholder="Password input" v-model="user_password">
                 </div>
             </form>
             <div class="uk-modal-footer uk-text-right">
                 <p>
-                    <a class="uk-button uk-button-primary">登陆</a>
+                    <a class="uk-button uk-button-primary" @click="login">登陆</a>
                     <a class="uk-button uk-button-success" data-uk-modal="{target:'.register-modal',center:true}">注册</a>
                 </p>
             </div>
@@ -68,20 +68,30 @@
             <a class="uk-modal-close uk-close"></a>
             <div class="uk-modal-header">注册</div>
             <form class="uk-form uk-form-horizontal uk-text-center">
-
                 <div class="uk-form-row">
-                    <label class="uk-form-label uk-text-right" for="form-u-it">用户名</label>
-                    <input type="text" id="form-u-it" placeholder="Text input">
+                    <label class="uk-form-label uk-text-right" for="form-r-email">邮箱</label>
+                    <input type="email" id="form-r-email" placeholder="Text input" v-model="user_email">
                 </div>
                 <div class="uk-form-row">
-                    <label class="uk-form-label uk-text-right" for="form-u-ip">密码</label>
-                    <input type="password" id="form-u-ip" placeholder="Password input">
+                    <label class="uk-form-label uk-text-right" for="form-r-password">密码</label>
+                    <input type="password" id="form-r-password" placeholder="Password input" v-model="user_password">
+                </div>
+                <div class="uk-form-row">
+                    <label class="uk-form-label uk-text-right" for="form-r-username">用户名</label>
+                    <input type="text" id="form-r-username" placeholder="Text input" v-model="user_name">
+                </div>
+                <div class="uk-form-row">
+                    <label class="uk-form-label uk-text-right" for="form-r-password">头像上传</label>
+                    <div class="uk-form-file uk-text-right">
+                        <button class="uk-button">选择照片</button>
+                        <input type="file">
+                    </div>
                 </div>
             </form>
             <div class="uk-modal-footer uk-text-right">
                 <p>
-                    <a class="uk-button uk-button-primary">确认</a>
-                    <a class="uk-button">取消</a>
+                    <a class="uk-button uk-button-primary" @click="register">确认</a>
+                    <a class="uk-button uk-modal-close">取消</a>
                 </p>
             </div>
         </div>
@@ -292,9 +302,10 @@
         </template>
         <!--管理相片页模版-->
         <template id="manage-view">
+            <router-view></router-view>
             <div class="layout manage-container">
                 <div class="manage-wrap">
-                    <h5 class="manage-title">相册管理</h5>
+                    <h5 class="manage-title">{{$route.name}}</h5>
                     <nav class="uk-navbar uk-navbar-attached">
 
                         <ul class="uk-navbar-nav">
@@ -305,13 +316,13 @@
 
                                 <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-bottom" style="top: 40px; left: 0px;">
                                     <ul class="uk-nav uk-nav-navbar">
-                                        <li><a href="#" v-link="{ path: '/manage/human' }">人物</a></li>
-                                        <li><a href="#" v-link="{ path: '/animal' }">动物</a></li>
-                                        <li><a href="#" v-link="{ path: '/city' }">城市</a></li>
-                                        <li><a href="#" v-link="{ path: '/science' }">科学/技术</a></li>
-                                        <li><a href="#" v-link="{ path: '/fashion' }">美妆/时尚</a></li>
-                                        <li><a href="#" v-link="{ path: '/nature' }">自然/旅游</a></li>
-                                        <li><a href="#" v-link="{ path: '/food' }">食物/饮料</a></li>
+                                        <li v-for="item in photoFilter"><a href="#" v-link="{ path: '/manage/'+ item.filterHref }">{{item.filterName}}</a></li>
+                                        <!--<li><a href="#" v-link="{ path: '/animal' }">动物</a></li>-->
+                                        <!--<li><a href="#" v-link="{ path: '/city' }">城市</a></li>-->
+                                        <!--<li><a href="#" v-link="{ path: '/science' }">科学/技术</a></li>-->
+                                        <!--<li><a href="#" v-link="{ path: '/fashion' }">美妆/时尚</a></li>-->
+                                        <!--<li><a href="#" v-link="{ path: '/nature' }">自然/旅游</a></li>-->
+                                        <!--<li><a href="#" v-link="{ path: '/food' }">食物/饮料</a></li>-->
                                     </ul>
                                 </div>
 
@@ -406,6 +417,12 @@
             </li>
 
         </template>
+        <template id="all-view">
+            <div>hahahddddddddddd</div>
+        </template>
+        <template id="human-view">
+            <div>dfowjofdjdwifjowi</div>
+        </template>
     </div>
 </div>
 
@@ -418,6 +435,7 @@
 <script src="js/lib/uikit/components/lightbox.min.js"></script>
 <script src="js/pages/components.js"></script>
 <script src="js/pages/views.js"></script>
+<script src="js/pages/modal.js"></script>
 <script src="js/pages/index.js"></script>
 </body>
 </html>

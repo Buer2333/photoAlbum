@@ -1,59 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4bbcd6b8-5354-4f30-bc20-b79ad4b85001" name="Default" comment="添加vue路由2">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/js/pages/components.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/js/pages/photo-op.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/js/pages/views.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/less/import/uikit.almost-flat.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/less/index/manageView.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/less/index/uploadImg.less" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/js/pages/componentLayout.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/alert.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/animation.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/article.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/badge.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/base.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/block.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/breadcrumb.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/button.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/close.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/column.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/comment.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/contrast.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/cover.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/description-list.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/dropdown.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/flex.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/form.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/grid.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/icon.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/list.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/modal.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/nav.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/navbar.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/offcanvas.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/overlay.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/pagination.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/panel.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/print.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/subnav.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/switcher.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/tab.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/table.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/text.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/thumbnail.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/thumbnav.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/utility.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/core/variables.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/uikit.less" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/static/less/import/uikit/components/slidenav.less" afterPath="$PROJECT_DIR$/app/static/less/import/slidenav.less" />
+    <list default="true" id="4bbcd6b8-5354-4f30-bc20-b79ad4b85001" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/js/pages/data.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/js/pages/modal.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/less/import/form-file.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/css/index.css" afterPath="$PROJECT_DIR$/app/static/css/index.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/index.html" afterPath="$PROJECT_DIR$/app/static/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/js/pages/index.js" afterPath="$PROJECT_DIR$/app/static/js/pages/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/js/pages/components.js" afterPath="$PROJECT_DIR$/app/static/js/pages/components.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/js/pages/views.js" afterPath="$PROJECT_DIR$/app/static/js/pages/views.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/less/index.less" afterPath="$PROJECT_DIR$/app/static/less/index.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/less/index/leftSidebar.less" afterPath="$PROJECT_DIR$/app/static/less/index/leftSidebar.less" />
     </list>
     <ignored path="photoAlbum.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -77,49 +34,23 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/static/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.832">
-              <caret line="420" column="0" selection-start-line="420" selection-start-column="0" selection-end-line="420" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.8382353">
+              <caret line="238" column="17" selection-start-line="238" selection-start-column="17" selection-end-line="238" selection-end-column="17" />
               <folding>
-                <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#ul#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#header#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#template#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#template#1;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#div#0;n#li#2;n#ul#0;n#nav#0;n#div#0;n#div#0;n#template#2;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#template#3;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#template#4;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#template#5;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="components.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/static/js/pages/components.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.8679247">
-              <caret line="46" column="9" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="uploadImg.less" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/static/less/index/uploadImg.less">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.411765">
-              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="manageView.less" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/static/less/index/manageView.less">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.529411">
-              <caret line="53" column="9" selection-start-line="53" selection-start-column="9" selection-end-line="61" selection-end-column="3" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -128,7 +59,17 @@
         <entry file="file://$PROJECT_DIR$/app/static/js/pages/views.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+              <caret line="120" column="30" selection-start-line="120" selection-start-column="30" selection-end-line="120" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="components.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/static/js/pages/components.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="91" column="37" selection-start-line="91" selection-start-column="37" selection-end-line="91" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -156,7 +97,6 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/app/static/less/index/head.less" />
         <option value="$PROJECT_DIR$/app/static/less/index/pusher.less" />
-        <option value="$PROJECT_DIR$/app/static/less/index/modal.less" />
         <option value="$PROJECT_DIR$/app/static/less/index/mainLayout.less" />
         <option value="$PROJECT_DIR$/app/static/js/pages/componentLayout.js" />
         <option value="$PROJECT_DIR$/app/static/js/pages/box.js" />
@@ -167,12 +107,15 @@
         <option value="$PROJECT_DIR$/app/static/less/import/uikit.almost-flat.less" />
         <option value="$PROJECT_DIR$/app/static/js/pages/index.js" />
         <option value="$PROJECT_DIR$/app/static/js/pages/photo-op.js" />
-        <option value="$PROJECT_DIR$/app/static/less/index.less" />
-        <option value="$PROJECT_DIR$/app/static/js/pages/views.js" />
         <option value="$PROJECT_DIR$/app/static/less/index/uploadImg.less" />
         <option value="$PROJECT_DIR$/app/static/less/index/manageView.less" />
+        <option value="$PROJECT_DIR$/app/static/less/index/modal.less" />
+        <option value="$PROJECT_DIR$/app/static/js/pages/data.json" />
+        <option value="$PROJECT_DIR$/app/static/js/pages/modal.js" />
         <option value="$PROJECT_DIR$/app/static/js/pages/components.js" />
+        <option value="$PROJECT_DIR$/app/static/less/index.less" />
         <option value="$PROJECT_DIR$/app/static/index.html" />
+        <option value="$PROJECT_DIR$/app/static/js/pages/views.js" />
       </list>
     </option>
   </component>
@@ -210,7 +153,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -328,6 +270,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="less" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="import" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="photoAlbum" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="photoAlbum" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -396,10 +364,11 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../work" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../usedCarMarket" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
@@ -421,18 +390,19 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="905" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="FullScreen" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/static/less/import/uikit" />
+      <recent name="$PROJECT_DIR$/js/lib/uikit/components" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/static/less/import" />
       <recent name="$PROJECT_DIR$/app/static/less/import/uikit" />
       <recent name="$PROJECT_DIR$/app/static/js/lib" />
       <recent name="$PROJECT_DIR$/app/static/img/test" />
       <recent name="$PROJECT_DIR$/js/lib/uikit" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/static/less/import/uikit" />
-      <recent name="$PROJECT_DIR$/js/lib/uikit/components" />
     </key>
   </component>
   <component name="RunManager">
@@ -556,14 +526,20 @@
       <option name="project" value="LOCAL" />
       <updated>1460385659174</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="all改1">
+      <created>1460863592501</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1460863592501</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2494043" sideWeight="0.49452055" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2494043" sideWeight="0.49452055" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.5059571" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3275862" sideWeight="0.4940429" order="7" side_tool="false" content_ui="tabs" />
@@ -620,37 +596,14 @@
     <MESSAGE value="头部导航栏动效,侧边栏内容,登陆模态框" />
     <MESSAGE value="添加vue路由" />
     <MESSAGE value="添加vue路由2" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加vue路由2" />
+    <MESSAGE value="all改1" />
+    <option name="LAST_COMMIT_MESSAGE" value="all改1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/static/js/pages/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="72" column="10" selection-start-line="72" selection-start-column="10" selection-end-line="72" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/js/pages/views.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="29" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/less/index.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/static/less/index/pusher.less">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -671,15 +624,19 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#ul#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#header#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#template#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#template#1;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#0;n#li#2;n#ul#0;n#nav#0;n#div#0;n#div#0;n#template#2;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#template#3;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#template#4;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#template#5;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -702,7 +659,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -726,15 +682,19 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="44" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
           <folding>
-            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#ul#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#header#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#template#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#template#1;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#0;n#li#2;n#ul#0;n#nav#0;n#div#0;n#div#0;n#template#2;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#template#3;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#template#4;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#template#5;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -750,7 +710,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -909,13 +868,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/less/index/modal.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.023041476">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/static/less/index/leftSidebar.less">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-18.82353">
@@ -959,19 +911,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/less/index.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/static/js/pages/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.5384616">
           <caret line="72" column="10" selection-start-line="72" selection-start-column="10" selection-end-line="72" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -979,14 +922,66 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/less/import/form-file.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/less/index/modal.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24150269">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="11" selection-end-column="3" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/js/pages/data.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="1" selection-start-line="3" selection-start-column="30" selection-end-line="6" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/static/less/index/uploadImg.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.411765">
+        <state vertical-scroll-proportion="0.83363146">
           <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/less/index/manageView.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.62432915">
+          <caret line="53" column="9" selection-start-line="53" selection-start-column="9" selection-end-line="61" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/less/index.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25597268">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/js/pages/modal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.6193181">
+          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="78" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/js/pages/components.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="91" column="37" selection-start-line="91" selection-start-column="37" selection-end-line="91" selection-end-column="37" />
           <folding />
         </state>
       </provider>
@@ -994,41 +989,29 @@
     <entry file="file://$PROJECT_DIR$/app/static/js/pages/views.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/less/index/manageView.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.529411">
-          <caret line="53" column="9" selection-start-line="53" selection-start-column="9" selection-end-line="61" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/js/pages/components.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.8679247">
-          <caret line="46" column="9" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
+          <caret line="120" column="30" selection-start-line="120" selection-start-column="30" selection-end-line="120" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/static/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.832">
-          <caret line="420" column="0" selection-start-line="420" selection-start-column="0" selection-end-line="420" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.8382353">
+          <caret line="238" column="17" selection-start-line="238" selection-start-column="17" selection-end-line="238" selection-end-column="17" />
           <folding>
-            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#ul#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#header#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#template#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#template#1;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#0;n#li#2;n#ul#0;n#nav#0;n#div#0;n#div#0;n#template#2;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#template#3;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#template#4;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#template#5;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>

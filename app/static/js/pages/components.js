@@ -36,7 +36,7 @@ var photoView = Vue.extend({
             //$(el).find(".photo-op").show()
             //return false
             this.show = true
-            console.log(this.show)
+
         },
         mouseLeave : function(event){
             //var el = event.currentTarget;
@@ -57,3 +57,44 @@ new Vue({
 
 })
 //upload-img组件
+new Vue({
+    el: ".login-modal",
+    data: {
+        user_email: "",
+        user_password: ""
+    },
+    methods: {
+        login: function(){
+            var _this = this;
+            var user_email = this.user_email;
+            var user_password = this.user_password;
+            $.ajax({
+                url:'js/pages/data.json',
+                type:'get',
+                data:{
+                    user_email:user_email,
+                    user_password:user_password
+                },
+                success:function(data){
+                    //if(data.iserro){
+                    //    _this.erro.iserro = true;
+                    //    _this.erro.text = data.msg;
+                    //    _this.erro.target = data.data.target;
+                    //    return;
+                    //}
+                    //localStorage.userInfo = JSON.stringify(data.data);
+                    //if(_this.remember){
+                    //    localStorage.remember = _this.remember;
+                    //}else{
+                    //    localStorage.remember = false;
+                    //}
+                    //router.go('/list');
+                    console.log(data)
+                }
+            })
+            //$.get('data.json',function (data){
+
+
+        }
+    }
+})
