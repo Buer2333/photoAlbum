@@ -1,0 +1,7 @@
+{
+  "user": [
+    { "user_email":"alan" , "user_password":"123" },
+    { "user_email":"George" , "user_password":"1234" },
+    { "user_email":"Thomas" , "user_password":"12345" }
+  ]
+}
