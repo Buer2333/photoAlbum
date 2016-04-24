@@ -1,14 +1,12 @@
+from flask.ext.script import Manager
+
 from app import create_app
-from app.model import Photo,User
-from flask.ext.script import Manager,Shell
 
 app = create_app('default')
 manage = Manager(app)
-
-def make_Shell_context():
-	return dict(app = app, User = User)
-manage.add_command('shell',Shell(make_Shell_context))
-
+app.jinja_env.variable_start_string = '{{ '
+app.jinja_env.variable_end_string = ' }}'
 
 if __name__ == '__main__':
-	manage.run()
+    # app.run(debug=True,port=7000)
+    app.run(debug=True)

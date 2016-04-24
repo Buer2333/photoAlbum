@@ -26,9 +26,9 @@ Vue.component('my-box',box);
 new Vue({
     el: ".content"
 })
-//photo-view组件
-var photoView = Vue.extend({
-    template: "#photo-view",
+//photo-Thumb组件
+var photoThumb = Vue.extend({
+    template: "#photo-thumb",
     methods : {
 
         mouseEnter : function(event) {
@@ -51,11 +51,43 @@ var photoView = Vue.extend({
     }
 
 })
-Vue.component('photo-view',photoView);
+Vue.component('photo-thumb',photoThumb);
 new Vue({
     el: ".uk-thumbnav"
 
 })
+//left-sidebar组件
+var leftSidebar = Vue.extend({
+    template: "#sidebar-container",
+    data: function() {
+        return {
+            photoFilter: [{
+                "filterName": "人物",
+                "filterHref": "Human"
+            }, {
+                "filterName": "动物",
+                "filterHref": "Animal"
+            }, {
+                "filterName": "城市",
+                "filterHref": "City"
+            }, {
+                "filterName": "科学/技术",
+                "filterHref": "Science"
+            }, {
+                "filterName": "美妆/时尚",
+                "filterHref": "Fashion"
+            }, {
+                "filterName": "自然/旅游",
+                "filterHref": "Nature"
+            }, {
+                "filterName": "食物/饮料",
+                "filterHref": "Food"
+            }]
+
+        }
+    }
+})
+Vue.component('left-sidebar',leftSidebar);
 //upload-img组件
 new Vue({
     el: ".login-modal",

@@ -1,20 +1,17 @@
-from flask import Flask , Blueprint
+from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 from  config import config
-app = Flask(__name__)
+
 db = SQLAlchemy()
-
-
-
-
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:root@localhost:3306/data-dev'
-
+app = Flask(__name__)
 def create_app(config_name):
-	app = Flask(__name__)
-	app.config.from_object(config[config_name])
-	config[config_name].init_app(app)
-	db.init_app(app)
-	from .main import main as blueprint
-	app.register_blueprint(blueprint)
-	return app
+    app.config.from_object(config[config_name])
+    app.secret_key = '1'
+    config[config_name].init_app(app)
+    db.init_app(app)
+    from .main import main
+    app.register_blueprint(main)
+    from .api import api
+    app.register_blueprint(api, url_prefix = '/api')
+    return app
 

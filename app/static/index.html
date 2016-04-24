@@ -8,36 +8,39 @@
 <body>
 <div id="app">
     <!--侧边栏-->
-    <div class="left-sidebar">
-        <div class="user-info">
-            <div class="user-img" data-uk-modal="{target:'.login-modal',center:true}">
-                <img src="img/test/account-photo.png" alt="">
+    <template id="sidebar-container">
+        <div class="left-sidebar">
+            <div class="user-info">
+                <div class="user-img" data-uk-modal="{target:'.login-modal',center:true}">
+                    <img src="img/test/account-photo.png" alt="">
+                </div>
+                <p class="user-name">Alan</p>
+                <p class="user-email">alanqqz@qq.com</p>
             </div>
-            <p class="user-name">Alan</p>
-            <p class="user-email">alanqqz@qq.com</p>
+            <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav="{multiple:true}" data-uk-switcher="{connect:'#filter-view'}">
+                <li class="uk-parent uk-active" aria-expanded="false">
+                    <a href="#">相片分类</a>
+                    <ul class="uk-nav-sub" id="filter-view">
+                        <li v-for="item in photoFilter"><a href="#" v-link="{ path: '/'+ item.filterHref }" class="uk-active">{{item.filterName}}</a></li>
+                        <!--<li><a href="#" v-link="{ name: 'human' }">人物</a></li>-->
+                        <!--<li><a href="#" v-link="{ name: 'animal' }">动物</a></li>-->
+                        <!--<li><a href="#" v-link="{ name: 'city' }">城市</a></li>-->
+                        <!--<li><a href="#" v-link="{ name: 'science' }">科学/技术</a></li>-->
+                        <!--<li><a href="#" v-link="{ name: 'fashion' }">美妆/时尚</a></li>-->
+                        <!--<li><a href="#" v-link="{ name: 'nature' }">自然/旅游</a></li>-->
+                        <!--<li><a href="#" v-link="{ name: 'food' }">食物/饮料</a></li>-->
+                    </ul>
+                </li>
+                <li class="">
+                    <a v-link="{ path: '/manage' }">相册管理</a>
+                </li>
+                <li class="">
+                    <a v-link="{ path: '/index' }">返回主页</a>
+                </li>
+            </ul>
         </div>
-        <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav="{multiple:true}">
-            <li class="uk-parent uk-active" aria-expanded="false">
-                <a href="#">相片分类</a>
-                <ul class="uk-nav-sub">
-                    <!--<li v-for="index in"><a href="#" v-link="{ name: 'index', params: 'index.filter' }" class="uk-active">所有</a></li>-->
-                    <li><a href="#" v-link="{ name: 'human' }">人物</a></li>
-                    <li><a href="#" v-link="{ name: 'animal' }">动物</a></li>
-                    <li><a href="#" v-link="{ name: 'city' }">城市</a></li>
-                    <li><a href="#" v-link="{ name: 'science' }">科学/技术</a></li>
-                    <li><a href="#" v-link="{ name: 'fashion' }">美妆/时尚</a></li>
-                    <li><a href="#" v-link="{ name: 'nature' }">自然/旅游</a></li>
-                    <li><a href="#" v-link="{ name: 'food' }">食物/饮料</a></li>
-                </ul>
-            </li>
-            <li class="">
-                <a v-link="{ path: '/manage' }">相册管理</a>
-            </li>
-            <li class="">
-                <a v-link="{ path: '/index' }">返回主页</a>
-            </li>
-        </ul>
-    </div>
+    </template>
+    <left-sidebar></left-sidebar>
     <!--登陆模态框-->
     <div class="uk-modal login-modal">
         <div class="uk-modal-dialog">
@@ -239,192 +242,160 @@
         </header>
         <!--pusher主要内容展示路由-->
         <router-view></router-view>
-        <!--index模版-->
-        <template id="index-view">
-            <div class="layout">
-                <div class="content">
-                    <my-box></my-box>
-                </div>
-            </div>
-        </template>
-        <!--box组件模版-->
-        <template id="index-box">
-            <div class="box" @mouseover="mouseEnter" @mouseout="mouseLeave">
-                <a href="img/test/u_20121025172315750264.jpg" data-uk-lightbox="{group:'my-group'}">
-                    <div class="img-overflow">
-                        <img src="img/test/u_20121025172315750264.jpg">
-                    </div>
-                    <div class="uk-overlay-panel">
-                        <div class="text-content">
-                            <div class="top">
-                                <div class="meta">
-                                    <span class="time">aaa</span>
-                                    <span class="views">aaa</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-content">
-                            <div class="bottom">
-                                <div class="meta">
-                                    <span class="detail">aaa</span>
-                                    <span class="author">aaaa</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="box" @mouseover="mouseEnter" @mouseout="mouseLeave">
-                <a href="img/test/u_20121025172315750264.jpg" data-uk-lightbox="{group:'my-group'}">
-                    <div class="img-overflow">
-                        <img src="img/test/u_20121025172315750264.jpg">
-                    </div>
-                    <div class="uk-overlay-panel">
-                        <div class="text-content">
-                            <div class="top">
-                                <div class="meta">
-                                    <span class="time">aaa</span>
-                                    <span class="views">aaa</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-content">
-                            <div class="bottom">
-                                <div class="meta">
-                                    <span class="detail">aaa</span>
-                                    <span class="author">aaaa</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </template>
-        <!--管理相片页模版-->
-        <template id="manage-view">
-            <router-view></router-view>
-            <div class="layout manage-container">
-                <div class="manage-wrap">
-                    <h5 class="manage-title">{{$route.name}}</h5>
-                    <nav class="uk-navbar uk-navbar-attached">
 
-                        <ul class="uk-navbar-nav">
-                            <li class="uk-active"><a href="">所有</a></li>
-                            <li><a href="">Item</a></li>
-                            <li class="uk-parent" data-uk-dropdown="" aria-haspopup="true" aria-expanded="false">
-                                <a href="">分类</a>
-
-                                <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-bottom" style="top: 40px; left: 0px;">
-                                    <ul class="uk-nav uk-nav-navbar">
-                                        <li v-for="item in photoFilter"><a href="#" v-link="{ path: '/manage/'+ item.filterHref }">{{item.filterName}}</a></li>
-                                        <!--<li><a href="#" v-link="{ path: '/animal' }">动物</a></li>-->
-                                        <!--<li><a href="#" v-link="{ path: '/city' }">城市</a></li>-->
-                                        <!--<li><a href="#" v-link="{ path: '/science' }">科学/技术</a></li>-->
-                                        <!--<li><a href="#" v-link="{ path: '/fashion' }">美妆/时尚</a></li>-->
-                                        <!--<li><a href="#" v-link="{ path: '/nature' }">自然/旅游</a></li>-->
-                                        <!--<li><a href="#" v-link="{ path: '/food' }">食物/饮料</a></li>-->
-                                    </ul>
-                                </div>
-
-                            </li>
-                        </ul>
-
-                    </nav>
-                    <p>
-                        <button class="uk-button uk-button-primary" type="button" data-uk-modal="{target:'#upload-img'}">上传图片</button>
-                        <button class="uk-button" type="button">Button</button>
-                        <button class="uk-button" type="button">Button</button>
-                    </p>
-                    <div class="manage-content">
-                        <div class="uk-margin content-padding" data-uk-margin="20px">
-                            <ul class="uk-thumbnav uk-grid-width-1-5">
-                                <photo-view></photo-view>
-                                <photo-view></photo-view>
-                                <li>
-                                    <a class="uk-thumbnail" href="#">
-                                        <img src="http://fakeimg.pl/350x200/" width="200" height="100" alt="">
-                                        <div class="uk-thumbnail-caption">Caption <code>&lt;a&gt;</code></div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="uk-thumbnail" href="#">
-                                        <img src="http://fakeimg.pl/350x200/" width="200" height="100" alt="">
-                                        <div class="uk-thumbnail-caption">Caption <code>&lt;a&gt;</code></div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="uk-thumbnail" href="#">
-                                        <img src="http://fakeimg.pl/350x200/" width="200" height="100" alt="">
-                                        <div class="uk-thumbnail-caption">Caption <code>&lt;a&gt;</code></div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="uk-thumbnail" href="#">
-                                        <img src="http://fakeimg.pl/350x200/" width="200" height="100" alt="">
-                                        <div class="uk-thumbnail-caption">Caption <code>&lt;a&gt;</code></div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="uk-thumbnail" href="#">
-                                        <img src="http://fakeimg.pl/350x200/" width="200" height="100" alt="">
-                                        <div class="uk-thumbnail-caption">Caption <code>&lt;a&gt;</code></div>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul class="uk-pagination">
-                                <li class="uk-disabled"><span><i class="uk-icon-angle-double-left"></i></span></li>
-                                <li class="uk-active"><span>1</span></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><span>...</span></li>
-                                <li><a href="#">20</a></li>
-                                <li><a href="#"><i class="uk-icon-angle-double-right"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!--<template>-->
-
-                <!--</template>-->
-
-            </div>
-        </template>
-        <!--相片选项模版-->
-        <template id="photo-view">
-            <li  @mouseenter="mouseEnter" @mouseleave="mouseLeave">
-                <section class="uk-thumbnail" href="img/test/u_autohomecar__wKgH01YdrliAQGXwAAMpH9-pDKY848.jpg" data-uk-lightbox="{group:'my-group'}">
-                    <img  src="img/test/u_autohomecar__wKgH01YdrliAQGXwAAMpH9-pDKY848.jpg" width="200" height="100" alt="">
-
-                    <div class="uk-thumbnail-caption">Caption <code>&lt;a&gt;</code></div>
-                </section>
-                <div class="uk-button-dropdown photo-op" data-uk-dropdown v-show="show">
-
-                    <!-- This is the button toggling the dropdown -->
-                    <a class="uk-button">
-                        <i class="uk-icon-chevron-down"></i>
-                    </a>
-
-                    <!-- This is the dropdown -->
-                    <div class="uk-dropdown uk-dropdown-small">
-                        <ul class="uk-nav uk-nav-dropdown">
-                            <li><a data-uk-modal="{target:'.edit'}">编辑</a></li>
-                            <li><a @click.stop>删除</a></li>
-
-                        </ul>
-                    </div>
-                </div>
-            </li>
-
-        </template>
-        <template id="all-view">
-            <div>hahahddddddddddd</div>
-        </template>
-        <template id="human-view">
-            <div>dfowjofdjdwifjowi</div>
-        </template>
     </div>
 </div>
+<!--index模版-->
+<template id="index-view">
+    <div class="layout">
+        <div class="content">
+            <my-box></my-box>
+            <my-box></my-box>
+        </div>
+    </div>
+</template>
+<template id="human-view">
+    slfdjwoifdjwoifjdo
+</template>
+
+<!--box组件模版-->
+<template id="index-box">
+    <div class="box" @mouseover="mouseEnter" @mouseout="mouseLeave">
+        <a href="img/test/u_20121025172315750264.jpg" data-uk-lightbox="{group:'my-group'}">
+            <div class="img-overflow">
+                <img src="img/test/u_20121025172315750264.jpg">
+            </div>
+            <div class="uk-overlay-panel">
+                <div class="text-content">
+                    <div class="top">
+                        <div class="meta">
+                            <span class="time">aaa</span>
+                            <span class="views">aaa</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-content">
+                    <div class="bottom">
+                        <div class="meta">
+                            <span class="detail">aaa</span>
+                            <span class="author">aaaa</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+</template>
+<!--管理相片页模版-->
+<template id="manage-view">
+    <div class="layout manage-container">
+        <div class="manage-wrap">
+            <h5 class="manage-title">{{$route.params.filterHref}}</h5>
+            <nav class="uk-navbar uk-navbar-attached">
+
+                <ul class="uk-navbar-nav"   data-uk-switcher="{connect:'#filter'}">
+                    <li class="uk-active"><a href="#" v-link="{ path: '/manage' }">所有</a></li>
+                    <li class="uk-parent" data-uk-dropdown="" aria-haspopup="true" aria-expanded="false">
+                        <a>分类</a>
+
+                        <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-bottom" style="top: 40px; left: 0px;">
+                            <ul class="uk-nav uk-nav-navbar" id="filter">
+                                <li v-for="item in photoFilter"><a href="#" v-link="{ path: '/manage/'+ item.filterHref }">{{item.filterName}}</a></li>
+                            </ul>
+                        </div>
+
+                    </li>
+                </ul>
+
+            </nav>
+            <p>
+                <button class="uk-button uk-button-primary" type="button" data-uk-modal="{target:'#upload-img'}">上传图片</button>
+            </p>
+            <div class="manage-content">
+                <div class="uk-margin content-padding" data-uk-margin="20px">
+                    <ul class="uk-thumbnav uk-grid-width-1-5">
+                        <photo-thumb></photo-thumb>
+                        <photo-thumb></photo-thumb>
+                        <li>
+                            <a class="uk-thumbnail" href="#">
+                                <img src="http://fakeimg.pl/350x200/" width="200" height="100" alt="">
+                                <div class="uk-thumbnail-caption">Caption <code>&lt;a&gt;</code></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="uk-thumbnail" href="#">
+                                <img src="http://fakeimg.pl/350x200/" width="200" height="100" alt="">
+                                <div class="uk-thumbnail-caption">Caption <code>&lt;a&gt;</code></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="uk-thumbnail" href="#">
+                                <img src="http://fakeimg.pl/350x200/" width="200" height="100" alt="">
+                                <div class="uk-thumbnail-caption">Caption <code>&lt;a&gt;</code></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="uk-thumbnail" href="#">
+                                <img src="http://fakeimg.pl/350x200/" width="200" height="100" alt="">
+                                <div class="uk-thumbnail-caption">Caption <code>&lt;a&gt;</code></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="uk-thumbnail" href="#">
+                                <img src="http://fakeimg.pl/350x200/" width="200" height="100" alt="">
+                                <div class="uk-thumbnail-caption">Caption <code>&lt;a&gt;</code></div>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="uk-pagination">
+                        <li class="uk-disabled"><span><i class="uk-icon-angle-double-left"></i></span></li>
+                        <li class="uk-active"><span>1</span></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><span>...</span></li>
+                        <li><a href="#">20</a></li>
+                        <li><a href="#"><i class="uk-icon-angle-double-right"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--<template>-->
+
+        <!--</template>-->
+
+    </div>
+</template>
+<template id="manage-filter">
+    weoifjowdio
+</template>
+<!--相片选项模版-->
+<template id="photo-thumb">
+    <li  @mouseenter="mouseEnter" @mouseleave="mouseLeave">
+        <section class="uk-thumbnail" href="img/test/u_autohomecar__wKgH01YdrliAQGXwAAMpH9-pDKY848.jpg" data-uk-lightbox="{group:'my-group'}">
+            <img  src="img/test/u_autohomecar__wKgH01YdrliAQGXwAAMpH9-pDKY848.jpg" width="200" height="100" alt="">
+
+            <div class="uk-thumbnail-caption">Caption <code>&lt;a&gt;</code></div>
+        </section>
+        <div class="uk-button-dropdown photo-op" data-uk-dropdown v-show="show">
+
+            <!-- This is the button toggling the dropdown -->
+            <a class="uk-button">
+                <i class="uk-icon-chevron-down"></i>
+            </a>
+
+            <!-- This is the dropdown -->
+            <div class="uk-dropdown uk-dropdown-small">
+                <ul class="uk-nav uk-nav-dropdown">
+                    <li><a data-uk-modal="{target:'.edit'}">编辑</a></li>
+                    <li><a @click.stop>删除</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </li>
+
+</template>
 
 <script src="js/lib/jquery.min.js"></script>
 <script src="js/lib/uikit/uikit.min.js"></script>

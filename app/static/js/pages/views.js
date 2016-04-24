@@ -1,28 +1,5 @@
 //view主视图组件
-var all = Vue.extend({
-    template: "#all-view"
-});
-var human = Vue.extend({
-    template: "#human-view"
-});
-var animal = Vue.extend({
-    template: "#animal-view"
-});
-var city = Vue.extend({
-    template: "#city-view"
-});
-var science = Vue.extend({
-    template: "#science-view"
-});
-var fashion = Vue.extend({
-    template: "#fashion-view"
-});
-var nature = Vue.extend({
-    template: "#nature-view"
-});
-var food = Vue.extend({
-    template: "#food-view"
-});
+
 var manage = Vue.extend({
     template: '#manage-view',
     //components: {
@@ -30,35 +7,35 @@ var manage = Vue.extend({
     //}
     data: function() {
         return {
-            manageTitle: "相册管理",
             photoFilter: [{
                 "filterName": "人物",
-                "filterHref": "human"
+                "filterHref": "Human"
             }, {
                 "filterName": "动物",
-                "filterHref": "animal"
+                "filterHref": "Animal"
             }, {
                 "filterName": "城市",
-                "filterHref": "city"
+                "filterHref": "City"
             }, {
                 "filterName": "科学/技术",
-                "filterHref": "science"
+                "filterHref": "Science"
             }, {
                 "filterName": "美妆/时尚",
-                "filterHref": "fashion"
+                "filterHref": "Fashion"
             }, {
                 "filterName": "自然/旅游",
-                "filterHref": "nature"
+                "filterHref": "Nature"
             }, {
                 "filterName": "食物/饮料",
-                "filterHref": "food"
+                "filterHref": "Food"
             }]
 
         }
     }
 })
+
 var index = Vue.extend({
-    template: '#index-view'
+    template: '#index-view',
 
 })
 
@@ -71,65 +48,44 @@ var router = new VueRouter()
 router.map({
     '/manage': {
         name: "相册管理",
-        component: manage,
-        subRoutes:{
-            '/human':{
-                name: "人物",
-                component: human
-            },
-            '/animal':{
-                component: animal
-            },
-            '/city':{
-                component: city
-            },
-            '/science':{
-                component: science
-            },
-            '/fashion':{
-                component: fashion
-            },
-            '/nature':{
-                component: nature
-            },
-            '/food':{
-                component: food
-            }
-        }
+        component: manage
+        //subRoutes:{
+        //    '/:filterHref': {
+        //        component: manageFilter
+        //    }
+        //    //'/human':{
+        //    //    name: "人物",
+        //    //    component: human
+        //    //},
+        //    //'/animal':{
+        //    //    component: animal
+        //    //},
+        //    //'/city':{
+        //    //    component: city
+        //    //},
+        //    //'/science':{
+        //    //    component: science
+        //    //},
+        //    //'/fashion':{
+        //    //    component: fashion
+        //    //},
+        //    //'/nature':{
+        //    //    component: nature
+        //    //},
+        //    //'/food':{
+        //    //    component: food
+        //    //}
+        //}
     },
-    '/index': {
+    '/manage/:filterHref': {
+        component: manage
+    },
+    '/': {
         name: "首页",
-        component:index,
-        subRoutes:{
-            '/human': {
-                name: 'human',
-                component:human
-            },
-            '/animal': {
-                name: 'animal',
-                component:animal
-            },
-            '/city': {
-                name: 'city',
-                component:city
-            },
-            '/science': {
-                name: 'science',
-                component:science
-            },
-            '/fashion': {
-                name: 'fashion',
-                component:fashion
-            },
-            '/nature': {
-                name: 'nature',
-                component:nature
-            },
-            '/food': {
-                name: 'food',
-                component:food
-            }
-        }
+        component:index
+    },
+    '/:filterHref': {
+        component: index
     }
 })
 router.redirect({//定义全局的重定向规则。全局的重定向会在匹配当前路径之前执行。
