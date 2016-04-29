@@ -11,10 +11,10 @@ class User(db.Model):
 	password_hash = db.Column(db.String(64))
 	email = db.Column(db.String(64), unique = True)
 	portrait_url = db.Column(db.String(64), unique = True)
-	photo_albums = db.relationship('PhotoAlbum',backref='user')
+	photos = db.relationship('Photo',backref='user')
 
 	def generate_auth_token(self, expiration = 36000):
-		s = Serializer('jz',expires_in = expiration)
+		s = Serializer('dx',expires_in = expiration)
 		return s.dumps({'id':self.id})
 
 	@property
@@ -33,7 +33,7 @@ class User(db.Model):
 
 	@staticmethod
 	def verify_auth_token(token):
-		s = Serializer('jz')
+		s = Serializer('dx')
 		try:
 			data = s.loads(token)
 		except SignatureExpired:
@@ -49,7 +49,6 @@ class PhotoAlbum(db.Model):
 	"""相册"""
 	__tablename__ = "photo_album"
 	id = db.Column(db.Integer, primary_key = True)
-	user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 	category = db.Column(db.String)
 	category_image_url = db.Column(db.String)
 	photos = db.relationship('Photo',backref='photo_album')
@@ -69,11 +68,13 @@ class Photo(db.Model):
 	time = db.Column(db.DateTime)
 	photo_url = db.Column(db.String(64), unique = True)
 	photo_Album_id =db.Column(db.Integer,db.ForeignKey('photo_album.id'))
+	photo_user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
 	def __repr__(self):
 		return '<Photo %r' % self.name
 	def to_json(self):
 		return{
 		"title":self.title,
 		"content":self.content,
-		"Photo_url":self.photo_url
+		"Photo_url":'127.0.0.1:5000/api/photo/'+self.photo_url,
+		'tag':self.photo_Album_id
 		}
