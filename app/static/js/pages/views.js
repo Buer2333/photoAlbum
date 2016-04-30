@@ -44,7 +44,9 @@ var index = Vue.extend({
 var App = Vue.extend({
 })
 //vue-router配置
-var router = new VueRouter()
+var router = new VueRouter({
+    //history: true
+})
 router.map({
     '/manage': {
         name: "相册管理",

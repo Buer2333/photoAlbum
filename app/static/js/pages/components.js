@@ -22,7 +22,6 @@ var box = Vue.extend({
         }
     }
 })
-/////
 Vue.component('my-box',box);
 new Vue({
     el: ".content"
