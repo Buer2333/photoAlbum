@@ -1,5 +1,4 @@
 // external js: masonry.pkgd.js, imagesloaded.pkgd.js
-
 // init Masonry
 var $grid = $('.content').masonry({
     itemSelector: '.box',
@@ -70,8 +69,33 @@ function setScroll(){
     animateOnScroll();
 })
 
-//photo-op
-
-
-
-
+//upload_image
+$(document).on('ready', function() {
+    $("#input-25").fileinput({
+        overwriteInitial: true,
+        initialCaption: "The Moon and the Earth"
+    });
+});
+function validateForm(){
+  url = 'api/photo?token=';
+  url += sessionStorage.tokenData;
+  $.ajax({
+                cache: true,
+                type: "POST",
+                url:url,
+                processData: false,  // 告诉jQuery不要去处理发送的数据
+                contentType: false,
+                data:new FormData($('#form')[0]),// 你的formid
+                error: function(request) {
+                    alert("Connection error");
+                },
+                success: function(data) {
+                  if(data.error==null){
+                    var modal = UIkit.modal("#upload-img");
+                    modal.hide();
+                  }else {
+                    alert(data.error)
+                  }
+                }
+            });
+}

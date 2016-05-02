@@ -2,95 +2,215 @@
 
 var manage = Vue.extend({
     template: '#manage-view',
-    //components: {
-    //    'upload-img': uploadImg
-    //}
     data: function() {
         return {
-            photoFilter: [{
-                "filterName": "人物",
-                "filterHref": "Human"
-            }, {
-                "filterName": "动物",
-                "filterHref": "Animal"
-            }, {
-                "filterName": "城市",
-                "filterHref": "City"
-            }, {
-                "filterName": "科学/技术",
-                "filterHref": "Science"
-            }, {
-                "filterName": "美妆/时尚",
-                "filterHref": "Fashion"
-            }, {
-                "filterName": "自然/旅游",
-                "filterHref": "Nature"
-            }, {
-                "filterName": "食物/饮料",
-                "filterHref": "Food"
-            }]
-
+            count:10,
+            loginEmail: sessionStorage.loginEmail || "",
+            offset:0,
+            tag:0,
+            photo_data:[]
         }
+    },
+    events:{
+      'edit-modal':function(index){
+        var modal = UIkit.modal(".edit");
+        if ( modal.isActive() ) {
+            modal.hide();
+        } else {
+            modal.show();
+        }
+        modal = this.$children[0];
+        modal.$data = this.photo_data[index];
+        console.log('index='+index);
+        console.log(modal.$data);
+
+      },
+      'delete-modal':function(index){
+        this.photo_data.splice(index,1);
+      }
+    },
+    watch:{
+
+      'tag':function(val, oldVal){
+          var that = this;
+          this.photo_data = [];
+        $.ajax({
+            url: 'http://127.0.0.1:5000/api/photos/'+sessionStorage.userId,
+            type: 'get',
+            data:{
+              tag:val
+            },
+            success: function(data) {
+              that.photo_data = [] ;
+
+                data.photos.forEach( function(element, index) {
+                    that.photo_data.push(element);
+                });
+
+                that.offset = data.offset;
+            }
+        });
+      }
+    },
+    ready: function() {
+        var that = this;
+        var url = 'http://127.0.0.1:5000/api/photos/'+
+        sessionStorage.userId+
+        '?count='+this.count+
+        '&offset='+this.offset+
+        '&tag='+this.tag;
+        $.ajax({
+            url: url,
+            type: 'get',
+            success: function(data) {
+                data.photos.forEach( function(element, index) {
+                    that.photo_data.push(element);
+                    console.log(element);
+
+                });
+                that.offset = data.offset;
+            }
+        });
+    },
+    component: {
+      "photo-thumb": photoThumb
+    },
+    methods:{
+      all:function(){
+        var that = this;
+        this.tag = 0;
+        this.offset = 0;
+        var url = 'http://127.0.0.1:5000/api/photos/'+
+        sessionStorage.userId+
+        '?count='+this.count+
+        '&offset='+this.offset+
+        '&tag='+this.tag;
+        $.ajax({
+            url: url,
+            type: 'get',
+            success: function(data) {
+              that.photo_data = [];
+                data.photos.forEach( function(element, index) {
+                    that.photo_data.push(element);
+                    console.log(element);
+
+                });
+                that.offset = data.offset;
+            }
+        });
+      },
+      changeTag:function(i){
+        this.tag=i;
+        var that = this;
+        var url = 'http://127.0.0.1:5000/api/photos/'+
+        sessionStorage.userId+
+        '?count='+this.count+
+        '&offset='+this.offset+
+        '&tag='+this.tag;
+        $.ajax({
+            url: url,
+            type: 'get',
+            success: function(data) {
+              that.photo_data = [];
+                data.photos.forEach( function(element, index) {
+                    that.photo_data.push(element);
+                    console.log(element);
+
+                });
+                that.offset = data.offset;
+            }
+        });
+      }
     }
-})
+});
 
 var index = Vue.extend({
     template: '#index-view',
+    ready: function() {
 
-})
+        var that = this;
+        $.ajax({
+            url: 'http://127.0.0.1:5000/api/photos',
+            type: 'get',
+            success: function(data) {
+                data.photos.forEach( function(element, index) {
+                    that.photo_data.push(element);
+
+                });
+                that.offset = data.offset;
+            }
+        });
+    },
+    watch:{
+
+      '$route.params.tag':function(val, oldVal){
+          var that = this;
+        $.ajax({
+            url: 'http://127.0.0.1:5000/api/photos',
+            type: 'get',
+            data:{
+              tag:val
+            },
+            success: function(data) {
+              that.photo_data = [] ;
+              console.log(data);
+                data.photos.forEach( function(element, index) {
+                    that.photo_data.push(element);
+                });
+
+                that.offset = data.offset;
+            }
+        });
+      }
+    },
+
+    data: function() {
+        return {
+            offset : 0,
+            photo_data: []
+        };
+    },
+    component:{
+        "my-box": box
+    }
+});
+Vue.component('index-view',index);
 
 
 //vue-router根组件
-var App = Vue.extend({
-})
-//vue-router配置
+var App =  Vue.extend({
+  name:'app',
+  component: {
+    "index-view": index
+  }
+});
+    //vue-router配置
 var router = new VueRouter({
     //history: true
-})
+});
+
 router.map({
     '/manage': {
         name: "相册管理",
         component: manage
-        //subRoutes:{
-        //    '/:filterHref': {
-        //        component: manageFilter
-        //    }
-        //    //'/human':{
-        //    //    name: "人物",
-        //    //    component: human
-        //    //},
-        //    //'/animal':{
-        //    //    component: animal
-        //    //},
-        //    //'/city':{
-        //    //    component: city
-        //    //},
-        //    //'/science':{
-        //    //    component: science
-        //    //},
-        //    //'/fashion':{
-        //    //    component: fashion
-        //    //},
-        //    //'/nature':{
-        //    //    component: nature
-        //    //},
-        //    //'/food':{
-        //    //    component: food
-        //    //}
-        //}
     },
-    '/manage/:filterHref': {
+    '/manage/:tag': {
         component: manage
     },
     '/': {
         name: "首页",
-        component:index
+        component: index
     },
-    '/:filterHref': {
+    '/:tag': {
         component: index
     }
-})
-router.redirect({//定义全局的重定向规则。全局的重定向会在匹配当前路径之前执行。
-    '*':"/index"//重定向任意未匹配路径到/index
 });
-router.start(App, '#app')
+router.redirect({ //定义全局的重定向规则。全局的重定向会在匹配当前路径之前执行。
+    '*': "/" //重定向任意未匹配路径到/index
+});
+router.start(App, '#app');
+router.app.$data={
+  tag:0
+};
+Vue.config.debug=true;
+Vue.config.devtools = true;

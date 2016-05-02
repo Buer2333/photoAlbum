@@ -3,19 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>PhotoGallery</title>
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css', _external = True) }}">
 </head>
 <body>
 <div id="app">
     <!--侧边栏-->
     <template id="sidebar-container">
         <div class="left-sidebar">
-            <div class="user-info">
-                <div class="user-img" data-uk-modal="{target:'.login-modal',center:true}">
-                    <img src="img/test/account-photo.png" alt="">
+            <div class="user-info" v-if="!loginEmail">
+                <div class="user-img">
+                    <img src="" alt="">
                 </div>
-                <p class="user-name">Alan</p>
-                <p class="user-email">alanqqz@qq.com</p>
+                <p class="user-email">登录</p>
+            </div>
+            <div class="user-info" v-if="loginEmail">
+                <div class="user-img" data-uk-modal="{target:'.login-modal',center:true}">
+                    <img src="" alt="">
+                </div>
+                <p class="user-email">{{loginEmail}}</p>
             </div>
             <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav="{multiple:true}" data-uk-switcher="{connect:'#filter-view'}">
                 <li class="uk-parent uk-active" aria-expanded="false">
@@ -397,16 +402,15 @@
 
 </template>
 
-<script src="js/lib/jquery.min.js"></script>
-<script src="js/lib/uikit/uikit.min.js"></script>
-<script src="js/lib/vue.min.js"></script>
-<script src="js/lib/vue-router.min.js"></script>
-<script src="js/lib/masonry.pkgd.min.js"></script>
-<script src="js/lib/imagesloaded.pkgd.min.js"></script>
-<script src="js/lib/uikit/components/lightbox.min.js"></script>
-<script src="js/pages/components.js"></script>
-<script src="js/pages/views.js"></script>
-<script src="js/pages/modal.js"></script>
-<script src="js/pages/index.js"></script>
+    <script src="../static/js/lib/jquery.min.js"></script>
+    <script src="../static/js/lib/uikit/uikit.min.js"></script>
+    <script src="../static/js/lib/vue.min.js"></script>
+    <script src="../static/js/lib/vue-router.min.js"></script>
+    <script src="../static/js/lib/masonry.pkgd.min.js"></script>
+    <script src="../static/js/lib/imagesloaded.pkgd.min.js"></script>
+    <script src="../static/js/lib/uikit/components/lightbox.min.js"></script>
+    <script src="../static/js/pages/components.js"></script>
+    <script src="../static/js/pages/views.js"></script>
+    <script src="../static/js/pages/index.js"></script>
 </body>
 </html>
