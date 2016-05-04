@@ -1,0 +1,117 @@
+//头部
+.header-wrap{
+  height: 550px;
+  position: relative;
+  margin-bottom: -450px;
+  //头部
+  .header{
+    -webkit-transition: background 0.25s ease;
+    transition: background 0.25s ease;
+    left: 0;
+    right: 0;
+    text-align: center;
+    .page{
+      -webkit-transition: background 0.4s;
+      transition: background 0.4s;
+      width: auto;
+      margin: 0;
+      padding-left: 9%;
+      padding-right: 9%;
+      box-sizing: border-box;
+      display: block;
+      &.static{
+        position: relative;
+        background-color: #050505;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 45px;
+        z-index: 10;
+        -webkit-backface-visibility: hidden;
+        -webkit-perspective: 1000;
+        .wrapper{
+          top: 6px;
+          .sidebar-toggle{
+            >span{
+              font-size: 16px;
+            }
+          }
+        }
+      }
+      .wrapper{
+        margin-top: 0px;
+        margin-bottom: 0px;
+        -webkit-transition: background 0.4s;
+        transition: background 0.4s;
+        text-align: center;
+        position: relative;
+        top: 70px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        .sidebar-toggle{
+          position: absolute;
+          left: 1rem;
+          color: #fff;
+          cursor: pointer;
+          .icon-base{
+            padding-top: 6px;
+            height: 35px;
+            width: 35px;
+            font-size: 20px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+          }
+          .name{
+            -webkit-transition: font 0.25s;
+            transition: font 0.25s;
+            font-size: 20px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
+  //头部标题
+  .header-title{
+    position: absolute;
+    bottom: 520px;
+    font-size: 2.5rem;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+  }
+  //头部背景壁纸
+  .header-bg-wrapper{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+    .header-bg{
+      background: url("../img/index-bg.jpg") no-repeat center center;
+      background-size: cover;
+      width: 100%;
+      position: absolute;
+      z-index: -1;
+      height: 100%;
+      background-position: 50% 50%;
+      top: 0px;
+      left: 0px;
+      .header-bg-cloak{
+        background: linear-gradient(to top, #101010 0%, rgba(5,5,5,0.6) 40%,rgba(4,4,4,0.4) 100%);
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+    }
+  }
+}
+
