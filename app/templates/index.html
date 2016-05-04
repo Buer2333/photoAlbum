@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>PhotoGallery</title>
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css', _external = True) }}">
+    <link rel="stylesheet" href="../static/css/index.css">
 </head>
 <body>
 <div id="app">
@@ -349,11 +349,13 @@
     <script src="../static/js/lib/vue.min.js"></script>
     <script src="../static/js/lib/vue-router.min.js"></script>
     <script src="../static/js/lib/masonry.pkgd.min.js"></script>
-    <script src="../static/js/lib/imagesLoaded.pkgd.min.js"></script>
     <script src="../static/js/lib/fileinput.min.js"></script>
-    <script src="../static/js/lib/uikit/components/lightbox.min.js"></script>
+    <!-- <script src="../static/js/lib/uikit/components/lightbox.min.js"></script> -->
     <script src="../static/js/pages/components.js"></script>
     <script src="../static/js/pages/views.js"></script>
+        <script src="../static/js/lib/imagesloaded.pkgd.min.js"></script>
+
     <script src="../static/js/pages/index.js"></script>
+
 </body>
 </html>

@@ -44,7 +44,7 @@ var photoThumb = Vue.extend({
         deletePhoto: function() {
             var that = this;
             $.ajax({
-                url: "http://127.0.0.1:5000/api/photo/" + that.dataBind.id + "?token=" + sessionStorage.tokenData,
+                url: "api/photo/" + that.dataBind.id + "?token=" + sessionStorage.tokenData,
                 type: "delete",
                 success: function(data) {
                     if (data.type) {
@@ -99,7 +99,7 @@ var loginModal = new Vue({
                 var user_password = this.user_password;
                 console.log(user_email + "" + user_password);
                 $.ajax({
-                    url: 'http://127.0.0.1:5000/api/token',
+                    url: 'api/token',
                     type: 'post',
                     data: {
                         email: _this.user_email,
@@ -145,7 +145,7 @@ var registerModal = new Vue({
             var user_email = _this.user_email;
             var user_password = this.user_password;
             $.ajax({
-                url: 'http://127.0.0.1:5000/api/user',
+                url: 'api/user',
                 type: 'post',
                 data: {
                     email: _this.user_email,
@@ -180,7 +180,7 @@ var modal = Vue.extend({
             "editPhoto": function() {
                 var that = this;
                 $.ajax({
-                    url: "http://127.0.0.1:5000/api/photo/" + that.id + "?token=" + sessionStorage.tokenData,
+                    url: "api/photo/" + that.id + "?token=" + sessionStorage.tokenData,
                     type: "put",
                     data: {
                         "photo_name": that.title,

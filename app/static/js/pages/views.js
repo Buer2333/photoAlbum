@@ -35,7 +35,7 @@ var manage = Vue.extend({
           var that = this;
           this.photo_data = [];
         $.ajax({
-            url: 'http://127.0.0.1:5000/api/photos/'+sessionStorage.userId,
+            url: 'api/photos/'+sessionStorage.userId,
             type: 'get',
             data:{
               tag:val
@@ -54,7 +54,7 @@ var manage = Vue.extend({
     },
     ready: function() {
         var that = this;
-        var url = 'http://127.0.0.1:5000/api/photos/'+
+        var url = 'api/photos/'+
         sessionStorage.userId+
         '?count='+this.count+
         '&offset='+this.offset+
@@ -80,7 +80,7 @@ var manage = Vue.extend({
         var that = this;
         this.tag = 0;
         this.offset = 0;
-        var url = 'http://127.0.0.1:5000/api/photos/'+
+        var url = 'api/photos/'+
         sessionStorage.userId+
         '?count='+this.count+
         '&offset='+this.offset+
@@ -102,7 +102,7 @@ var manage = Vue.extend({
       changeTag:function(i){
         this.tag=i;
         var that = this;
-        var url = 'http://127.0.0.1:5000/api/photos/'+
+        var url = 'api/photos/'+
         sessionStorage.userId+
         '?count='+this.count+
         '&offset='+this.offset+
@@ -130,7 +130,7 @@ var index = Vue.extend({
 
         var that = this;
         $.ajax({
-            url: 'http://127.0.0.1:5000/api/photos',
+            url: 'api/photos',
             type: 'get',
             success: function(data) {
                 data.photos.forEach( function(element, index) {
@@ -146,7 +146,7 @@ var index = Vue.extend({
       '$route.params.tag':function(val, oldVal){
           var that = this;
         $.ajax({
-            url: 'http://127.0.0.1:5000/api/photos',
+            url: 'api/photos',
             type: 'get',
             data:{
               tag:val
