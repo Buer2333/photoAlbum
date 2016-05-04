@@ -110,9 +110,9 @@ def get_all_images():
     offset = int(request.args.get('offset',0))
     tag =  int(request.args.get('tag',0))
     if tag == 0:
-        photos = Photo.query.order_by('-time').limit(count).offset(offset)
+        photos = Photo.query.order_by('-id').limit(count).offset(offset)
     else:
-        photos = Photo.query.filter_by(photo_Album_id=tag).order_by('-time').limit(count).offset(offset)
+        photos = Photo.query.filter_by(photo_Album_id=tag).order_by('-id').limit(count).offset(offset)
     if photos is  None:
         return jsonify({"messig":"没有更多图片了"})
 
@@ -144,9 +144,9 @@ def get_user_photos(userID):
     offset = int(request.args.get('offset',0))
     photo_albumid = int(request.args.get('tag',0))
     if photo_albumid == 0:
-        photos = Photo.query.filter_by(photo_user_id=userID).order_by('-time').limit(count).offset(offset)
+        photos = Photo.query.filter_by(photo_user_id=userID).order_by('-id').limit(count).offset(offset)
     else:
-        photos = Photo.query.filter_by(photo_Album_id=photo_albumid,photo_user_id=userID).order_by('-time').limit(count).offset(offset)
+        photos = Photo.query.filter_by(photo_Album_id=photo_albumid,photo_user_id=userID).order_by('-id').limit(count).offset(offset)
     photos_array = []
     for photo in photos:
         photos_array.append(photo.to_json())
