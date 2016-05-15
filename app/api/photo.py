@@ -7,15 +7,17 @@ from ..model import User,db,Photo,PhotoAlbum
 from werkzeug.utils import secure_filename
 from datetime import datetime
 UPLOAD_FOLDER = "app/photo/"
-
+ALLOWED_EXTENSIONS = set(['txt','pdf','png','jpg','jpeg','gif'])
 #添加图片
 @api.route('/photo', methods=['POST'])
 def upload_image():
     token = request.args.get('token')
-    category_id= request.form.get('category_id')
+    category_id= int(request.form.get('category_id'))
     photo_name =  request.form.get('photo_name','')
     photo_content = request.form.get('photo_content','')
-
+    photo_open = request.form.get('photo_open','True')
+    data = 'True'
+    isTrue = data==photo_open
     if not token  or not category_id:
         return jsonify({"error":'没有token或者分类','content':'token无效或者相册分类无效','id':category_id})
     user = User.verify_auth_token(token)
@@ -26,13 +28,16 @@ def upload_image():
     if files:
         for file in files:
             filename = secure_filename(file.filename)
+            if not filename.rsplit('.',1)[1] in ALLOWED_EXTENSIONS:
+                return jsonify({'error':'文件格式不正确'})
+            photo_n = filename
             nowtime = datetime.now()
             filename = str(nowtime.timestamp())+filename
             file.save(os.path.join(UPLOAD_FOLDER, filename))
-            photo = Photo(title=photo_name,content=photo_content,time=nowtime,photo_url=filename,photo_Album_id=category_id,photo_user_id=user.id)
+            photo = Photo(title=photo_n,content=photo_content,time=nowtime,photo_url=filename,photo_Album_id=category_id,photo_user_id=user.id,photo_open=isTrue)
             db.session.add(photo)
         db.session.commit()
-        return jsonify({'type':True})
+        return jsonify({'type':True,'photo_open':photo_open})
     return jsonify({'error':'上传失败'})
 
 #获取图片
@@ -81,28 +86,6 @@ def delete_photo(photo_id):
     else:
         return jsonify({"error":'你没有权限修改别人的照片',"photo":a,"user":user.id})
 
-            # photoFilter: [{
-            #     "filterName": "人物",
-            #     "filterHref": "Human"
-            # }, {
-            #     "filterName": "动物",
-            #     "filterHref": "Animal"
-            # }, {
-            #     "filterName": "城市",
-            #     "filterHref": "City"
-            # }, {
-            #     "filterName": "科学/技术",
-            #     "filterHref": "Science"
-            # }, {
-            #     "filterName": "美妆/时尚",
-            #     "filterHref": "Fashion"
-            # }, {
-            #     "filterName": "自然/旅游",
-            #     "filterHref": "Nature"
-            # }, {
-            #     "filterName": "食物/饮料",
-            #     "filterHref": "Food"
-            # }]
 #获取所有图片
 @api.route('/photos',methods= ['GET'])
 def get_all_images():
@@ -110,9 +93,9 @@ def get_all_images():
     offset = int(request.args.get('offset',0))
     tag =  int(request.args.get('tag',0))
     if tag == 0:
-        photos = Photo.query.order_by('-id').limit(count).offset(offset)
+        photos = Photo.query.order_by('-id').filter_by(photo_open=True).limit(count).offset(offset)
     else:
-        photos = Photo.query.filter_by(photo_Album_id=tag).order_by('-id').limit(count).offset(offset)
+        photos = Photo.query.filter_by(photo_Album_id=tag,photo_open=True).order_by('-id').limit(count).offset(offset)
     if photos is  None:
         return jsonify({"messig":"没有更多图片了"})
 
@@ -143,11 +126,21 @@ def get_user_photos(userID):
     count = int(request.args.get('count',10))
     offset = int(request.args.get('offset',0))
     photo_albumid = int(request.args.get('tag',0))
+    token = request.args.get('token')
+
     if photo_albumid == 0:
         photos = Photo.query.filter_by(photo_user_id=userID).order_by('-id').limit(count).offset(offset)
     else:
         photos = Photo.query.filter_by(photo_Album_id=photo_albumid,photo_user_id=userID).order_by('-id').limit(count).offset(offset)
     photos_array = []
-    for photo in photos:
-        photos_array.append(photo.to_json())
-    return jsonify({"offset":offset,"photos":photos_array})
+    if token:
+        user = User.verify_auth_token(token)
+        if user.id == userID:
+            for photo in photos:
+                photos_array.append(photo.to_json())
+    else:
+        for photo in photos:
+            if photo.photo_open:
+                photos_array.append(photo.to_json())
+
+    return jsonify({"offset":offset,"photos":photos_array,'token':token})
