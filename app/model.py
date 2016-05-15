@@ -69,6 +69,8 @@ class Photo(db.Model):
 	photo_url = db.Column(db.String(64), unique = True)
 	photo_Album_id =db.Column(db.Integer,db.ForeignKey('photo_album.id'))
 	photo_user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+	photo_open = db.Column(db.Boolean)
+
 	def __repr__(self):
 		return '<Photo %r' % self.name
 	def to_json(self):

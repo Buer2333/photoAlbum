@@ -14,7 +14,7 @@
     <div class="uk-modal login-modal">
         <div class="uk-modal-dialog">
             <a class="uk-modal-close uk-close"></a>
-            <div class="uk-modal-header">登陆</div>
+            <div class="uk-modal-header">登录</div>
             <form class="uk-form uk-form-horizontal uk-text-center">
 
                 <div class="uk-form-row">
@@ -28,7 +28,7 @@
             </form>
             <div class="uk-modal-footer uk-text-right">
                 <p>
-                    <a class="uk-button uk-button-primary" @click="login">登陆</a>
+                    <a class="uk-button uk-button-primary" @click="login">登录</a>
                     <a class="uk-button uk-button-success" data-uk-modal="{target:'.register-modal',center:true}">注册</a>
                 </p>
             </div>
@@ -72,8 +72,8 @@
     <div class="uk-modal logout-modal">
         <div class="uk-modal-dialog">
             <a class="uk-modal-close uk-close"></a>
-            <div class="uk-modal-header">退出登陆</div>
-            <p>是否要退出登陆?</p>
+            <div class="uk-modal-header">退出登录</div>
+            <p>是否要退出登录?</p>
             <div class="uk-modal-footer uk-text-right">
                 <p>
                     <a class="uk-button uk-button-primary" @click="logout">确认</a>
@@ -150,6 +150,7 @@
                 <option value="{{ photo_album.id }}">{{ photo_album.category }}</option>
                 {{%endfor%}}
               </select>
+
               <label class="control-label">Planets and Satellites</label>
               <!-- <input type="file" name='image'> -->
               <!-- <button type="submit">提交</button> -->
@@ -174,7 +175,7 @@
                 </div>
             </div>
             <div class="header-title">
-                韦东翔的毕业设计
+                电子相册
             </div>
             <div class="header-bg-wrapper">
                 <div class="header-bg">
@@ -350,7 +351,7 @@
     <script src="../static/js/lib/vue-router.min.js"></script>
     <script src="../static/js/lib/masonry.pkgd.min.js"></script>
     <script src="../static/js/lib/fileinput.min.js"></script>
-    <!-- <script src="../static/js/lib/uikit/components/lightbox.min.js"></script> -->
+    <script src="../static/js/lib/uikit/components/lightbox.min.js"></script>
     <script src="../static/js/pages/components.js"></script>
     <script src="../static/js/pages/views.js"></script>
         <script src="../static/js/lib/imagesloaded.pkgd.min.js"></script>

@@ -34,8 +34,15 @@ var manage = Vue.extend({
       'tag':function(val, oldVal){
           var that = this;
           this.photo_data = [];
+          if (sessionStorage.tokenData) {
+            var url = 'api/photos/'+sessionStorage.userId+'?token='+sessionStorage.tokenData;
+            console.log(url);
+          }else {
+              var url = 'api/photos/'+sessionStorage.userId
+            console.log(url);
+          }
         $.ajax({
-            url: 'api/photos/'+sessionStorage.userId,
+            url: url,
             type: 'get',
             data:{
               tag:val
@@ -58,7 +65,8 @@ var manage = Vue.extend({
         sessionStorage.userId+
         '?count='+this.count+
         '&offset='+this.offset+
-        '&tag='+this.tag;
+        '&tag='+this.tag+
+        '&token='+sessionStorage.tokenData;
         $.ajax({
             url: url,
             type: 'get',

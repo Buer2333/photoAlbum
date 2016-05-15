@@ -156,7 +156,7 @@ var registerModal = new Vue({
                         //注册成功
                         sessionStorage.tokenData = data.token;
                         sessionStorage.loginEmail = data.email;
-                        sessionStorage.userId = data.userID;
+                        sessionStorage.userId = data.userId;
                         location.reload()
                     } else {
                         //失败

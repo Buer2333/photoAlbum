@@ -8,5 +8,5 @@ app.jinja_env.variable_start_string = '{{ '
 app.jinja_env.variable_end_string = ' }}'
 
 if __name__ == '__main__':
-    app.run(debug=True,host='0.0.0.0')
-    # app.run(debug=True)
+    app.run(debug=True)
+    # manager.run()
