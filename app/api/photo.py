@@ -7,33 +7,38 @@ from ..model import User,db,Photo,PhotoAlbum
 from werkzeug.utils import secure_filename
 from datetime import datetime
 UPLOAD_FOLDER = "app/photo/"
-
+ALLOWED_EXTENSIONS = set(['txt','pdf','png','jpg','jpeg','gif'])
 #添加图片
 @api.route('/photo', methods=['POST'])
 def upload_image():
     token = request.args.get('token')
-    category_id= request.args.get('category_id')
-    photo_name =  request.args.get('photo_name','')
-    photo_content = request.args.get('photo_content','')
-
+    category_id= int(request.form.get('category_id'))
+    photo_name =  request.form.get('photo_name','')
+    photo_content = request.form.get('photo_content','')
+    photo_open = request.form.get('photo_open','True')
+    data = 'True'
+    isTrue = data==photo_open
     if not token  or not category_id:
-        return jsonify({"type":False,'content':'token无效或者相册分类无效','id':category_id})
+        return jsonify({"error":'没有token或者分类','content':'token无效或者相册分类无效','id':category_id})
     user = User.verify_auth_token(token)
     if not user:
-        return jsonify({'type':False,'content':'token无效','userid':user.email})
+        return jsonify({'error':'token错误','content':'token无效','userid':user.email})
     photo_album = PhotoAlbum.query.get(category_id)
     files = request.files.getlist('image')
     if files:
         for file in files:
             filename = secure_filename(file.filename)
+            if not filename.rsplit('.',1)[1] in ALLOWED_EXTENSIONS:
+                return jsonify({'error':'文件格式不正确'})
+            photo_n = filename
             nowtime = datetime.now()
             filename = str(nowtime.timestamp())+filename
             file.save(os.path.join(UPLOAD_FOLDER, filename))
-            photo = Photo(title=photo_name,content=photo_content,time=nowtime,photo_url=filename,photo_Album_id=category_id,photo_user_id=user.id)
+            photo = Photo(title=photo_n,content=photo_content,time=nowtime,photo_url=filename,photo_Album_id=category_id,photo_user_id=user.id,photo_open=isTrue)
             db.session.add(photo)
         db.session.commit()
-        return jsonify({'type':True})
-    return str('没有上传图片')
+        return jsonify({'type':True,'photo_open':photo_open})
+    return jsonify({'error':'上传失败'})
 
 #获取图片
 @api.route('/photo/<string:photo_url>')
@@ -47,37 +52,39 @@ def get_photo(photo_url):
 @api.route('/photo/<int:photo_id>' ,methods = ['PUT'])
 def put_photot(photo_id):
     token = request.args.get('token')
-    photo_name =  request.args.get('photo_name','')
-    photo_content = request.args.get('photo_content','')
+    photo_name =  request.form.get('photo_name','')
+    photo_content = request.form.get('photo_content','')
+    # return jsonify({'token':token,'name':photo_name,"content":photo_content})
     if not token and photo_name != '' and photo_content != '':
         return jsonify({"type":False,'content':'token无效'})
     photo = Photo.query.get(photo_id)
     user = User.verify_auth_token(token)
+    if not user:
+        return jsonify({'error':'token错误','content':'token无效','userid':user.email})
     if photo.photo_user_id == user.id:
         photo.title = photo_name
         photo.content = photo_content
         db.session.commit()
         return jsonify({"type":True})
     else:
-        return jsonify({"type":False})
+        return jsonify({"error":'你没有权限修改别人的照片'})
 
 #删除图片
 
 @api.route('/photo/<int:photo_id>',methods = ['DELETE'])
 def delete_photo(photo_id):
     token = request.args.get('token')
-    photo_name =  request.args.get('photo_name','')
-    photo_content = request.args.get('photo_content','')
-    if not token and photo_name != '' and photo_content != '':
+
+    if not token :
         return jsonify({"type":False,'content':'token无效'})
     photo = Photo.query.get(photo_id)
     user = User.verify_auth_token(token)
+    a = photo.photo_user_id;
     if photo.photo_user_id == user.id:
         db.session.delete(photo)
         return jsonify({"type":True})
     else:
-        return jsonify({"type":False})
-
+        return jsonify({"error":'你没有权限修改别人的照片',"photo":a,"user":user.id})
 
 #获取所有图片
 @api.route('/photos',methods= ['GET'])
@@ -86,16 +93,17 @@ def get_all_images():
     offset = int(request.args.get('offset',0))
     tag =  int(request.args.get('tag',0))
     if tag == 0:
-        photos = Photo.query.order_by('-time').limit(count).offset(offset)
+        photos = Photo.query.order_by('-id').filter_by(photo_open=True).limit(count).offset(offset)
     else:
-        photos = Photo.query.filter_by(photo_Album_id=tag).order_by('-time').limit(count).offset(offset)
+        photos = Photo.query.filter_by(photo_Album_id=tag,photo_open=True).order_by('-id').limit(count).offset(offset)
     if photos is  None:
         return jsonify({"messig":"没有更多图片了"})
-    offset = count+offset
+
     photos_array = []
     for photo in photos:
         photos_array.append(photo.to_json())
-
+    count = len(photos_array)
+    offset = count+offset+1
     return jsonify({"offset":offset,"photos":photos_array})
 
 #获取所有分类
@@ -105,6 +113,8 @@ def all_photo_album():
     if photo_albums is None:
         return jsonify({'type':'false'})
     photo_albums_Array = []
+    if len(photo_albums_Array)==0:
+        return jsonify({'error':'没有更多图片'})
     for photo_album in photo_albums:
         photo_albums_Array.append(photo_album.to_json())
     return jsonify({"photo_albums":photo_albums_Array})
@@ -116,13 +126,21 @@ def get_user_photos(userID):
     count = int(request.args.get('count',10))
     offset = int(request.args.get('offset',0))
     photo_albumid = int(request.args.get('tag',0))
+    token = request.args.get('token')
+
     if photo_albumid == 0:
-        photos = Photo.query.filter_by(photo_user_id=userID).limit(count).offset(offset)
+        photos = Photo.query.filter_by(photo_user_id=userID).order_by('-id').limit(count).offset(offset)
     else:
-        photos = Photo.query.filter_by(photo_Album_id=photo_albumid,photo_user_id=userID).limit(count).offset(offset)
+        photos = Photo.query.filter_by(photo_Album_id=photo_albumid,photo_user_id=userID).order_by('-id').limit(count).offset(offset)
     photos_array = []
-    for photo in photos:
-        photos_array.append(photo.to_json())
-    return jsonify({"offset":offset,"photos":photos_array})
+    if token:
+        user = User.verify_auth_token(token)
+        if user.id == userID:
+            for photo in photos:
+                photos_array.append(photo.to_json())
+    else:
+        for photo in photos:
+            if photo.photo_open:
+                photos_array.append(photo.to_json())
 
-
+    return jsonify({"offset":offset,"photos":photos_array,'token':token})

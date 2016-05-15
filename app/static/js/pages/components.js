@@ -1,9 +1,9 @@
 //box组件
 var box = Vue.extend({
     template: "#index-box",
-    methods : {
+    methods: {
 
-        mouseEnter : function() {
+        mouseEnter: function() {
             var el = event.currentTarget;
 
             $(el).find("img").addClass('enlarge');
@@ -12,7 +12,7 @@ var box = Vue.extend({
             $(el).find(".bottom").addClass('slideUp');
 
         },
-        mouseLeave : function(){
+        mouseLeave: function() {
             var el = event.currentTarget;
 
             $(el).find("img").removeClass('enlarge');
@@ -20,113 +20,179 @@ var box = Vue.extend({
             $(el).find(".top").removeClass('slideDown');
             $(el).find(".bottom").removeClass('slideUp');
         }
-    }
+    },
+    props: ['dataBind']
 })
-Vue.component('my-box',box);
+Vue.component('my-box', box);
 new Vue({
-    el: ".content"
-})
-//photo-Thumb组件
+        el: ".content"
+    })
+    //photo-Thumb组件
 var photoThumb = Vue.extend({
     template: "#photo-thumb",
-    methods : {
-
-        mouseEnter : function(event) {
-            //var el = event.currentTarget;
-            //$(el).find(".photo-op").show()
-            //return false
+    methods: {
+        mouseEnter: function(event) {
             this.show = true
+        },
+        mouseLeave: function(event) {
+            this.show = false
+        },
+        editPhoto: function() {
+            this.$dispatch('edit-modal', this.index);
 
         },
-        mouseLeave : function(event){
-            //var el = event.currentTarget;
-            //$(el).find(".photo-op").hide();
-            //return false
-            this.show = false
-
+        deletePhoto: function() {
+            var that = this;
+            $.ajax({
+                url: "api/photo/" + that.dataBind.id + "?token=" + sessionStorage.tokenData,
+                type: "delete",
+                success: function(data) {
+                    if (data.type) {
+                        that.$dispatch('delete-modal', this.index);
+                    //
+                    }
+                    console.log(data)
+                }
+            });
         }
     },
-    data : function () {
-        return { show: false }
-    }
-
-})
-Vue.component('photo-thumb',photoThumb);
+    data: function() {
+        return {
+            show: false
+        }
+    },
+    props: ['dataBind', 'index']
+});
+Vue.component('photo-thumb', photoThumb);
 new Vue({
-    el: ".uk-thumbnav"
-
-})
-//left-sidebar组件
+        el: ".uk-thumbnav"
+    })
+    //left-sidebar组件
 var leftSidebar = Vue.extend({
     template: "#sidebar-container",
     data: function() {
         return {
-            photoFilter: [{
-                "filterName": "人物",
-                "filterHref": "Human"
-            }, {
-                "filterName": "动物",
-                "filterHref": "Animal"
-            }, {
-                "filterName": "城市",
-                "filterHref": "City"
-            }, {
-                "filterName": "科学/技术",
-                "filterHref": "Science"
-            }, {
-                "filterName": "美妆/时尚",
-                "filterHref": "Fashion"
-            }, {
-                "filterName": "自然/旅游",
-                "filterHref": "Nature"
-            }, {
-                "filterName": "食物/饮料",
-                "filterHref": "Food"
-            }]
+            loginEmail: sessionStorage.loginEmail || ""
 
+        }
+    },
+    methods: {
+        changeView: function(i) {
+            router.app.tag = i;
         }
     }
 })
-Vue.component('left-sidebar',leftSidebar);
-//upload-img组件
-new Vue({
-    el: ".login-modal",
+
+
+Vue.component('left-sidebar', leftSidebar);
+//loginModal组件
+var loginModal = new Vue({
+        el: ".login-modal",
+        data: {
+            user_email: "",
+            user_password: ""
+        },
+        methods: {
+            login: function() {
+                var _this = this;
+                var user_email = _this.user_email;
+                var user_password = this.user_password;
+                console.log(user_email + "" + user_password);
+                $.ajax({
+                    url: 'api/token',
+                    type: 'post',
+                    data: {
+                        email: _this.user_email,
+                        password: _this.user_password
+                    },
+                    success: function(data) {
+                        if (data.error == null) {
+                            //登陆成功
+                            var modal = UIkit.modal(".login-modal");
+                            modal.hide();
+                            sessionStorage.loginEmail = data.email;
+                            sessionStorage.tokenData = data.token;
+                            sessionStorage.userId = data.userID;
+                            location.reload()
+                        } else {
+                            console.log("failed!");
+                        }
+                    }
+                })
+            }
+        }
+    })
+    //logoutModal组件
+var logoutModal = new Vue({
+        el: ".logout-modal",
+        methods: {
+            logout: function() {
+                sessionStorage.clear();
+                location.reload();
+            }
+        }
+    })
+    //registerModal组件
+var registerModal = new Vue({
+    el: ".register-modal",
     data: {
         user_email: "",
         user_password: ""
     },
     methods: {
-        login: function(){
+        register: function() {
             var _this = this;
-            var user_email = this.user_email;
+            var user_email = _this.user_email;
             var user_password = this.user_password;
             $.ajax({
-                url:'js/pages/data.json',
-                type:'get',
-                data:{
-                    user_email:user_email,
-                    user_password:user_password
+                url: 'api/user',
+                type: 'post',
+                data: {
+                    email: _this.user_email,
+                    password: _this.user_password
                 },
-                success:function(data){
-                    //if(data.iserro){
-                    //    _this.erro.iserro = true;
-                    //    _this.erro.text = data.msg;
-                    //    _this.erro.target = data.data.target;
-                    //    return;
-                    //}
-                    //localStorage.userInfo = JSON.stringify(data.data);
-                    //if(_this.remember){
-                    //    localStorage.remember = _this.remember;
-                    //}else{
-                    //    localStorage.remember = false;
-                    //}
-                    //router.go('/list');
-                    console.log(data)
+                success: function(data) {
+                    if (data.error == null) {
+                        //注册成功
+                        sessionStorage.tokenData = data.token;
+                        sessionStorage.loginEmail = data.email;
+                        sessionStorage.userId = data.userId;
+                        location.reload()
+                    } else {
+                        //失败
+                    }
                 }
             })
-            //$.get('data.json',function (data){
-
-
         }
     }
 })
+var modal = Vue.extend({
+        template: "#photoModal",
+        data: function() {
+            return {
+                title: "",
+                content: "",
+                tag: ""
+            }
+        },
+        props: ['photo'],
+        methods: {
+            "editPhoto": function() {
+                var that = this;
+                $.ajax({
+                    url: "api/photo/" + that.id + "?token=" + sessionStorage.tokenData,
+                    type: "put",
+                    data: {
+                        "photo_name": that.title,
+                        "photo_content": that.content
+                    },
+                    success: function(data) {
+                        console.log(data);
+                    }
+                })
+            }
+        }
+    }
+
+);
+Vue.component('app-modal', modal);
